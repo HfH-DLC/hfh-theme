@@ -69,7 +69,7 @@
 						)
 					);
 					?>
-					<button class="site-search-toggle" type="button"><span class="sr-only"><?php echo _x('Toggle Search', 'toggle site search visibility') ?></span></button>
+					<button class="site-search-toggle" type="button" aria-controls="site-search" aria-expanded="false"><span class="sr-only"><?php echo _x('Toggle Search', 'toggle site search visibility') ?></span></button>
 					<?php get_search_form() ?>
 				</nav><!-- #site-navigation -->
 			</div>
