@@ -1,5 +1,4 @@
 <?php
-
 /**
  * The template for displaying search results pages
  *
@@ -13,19 +12,20 @@ get_header();
 <div class="site-flex">
 	<main id="primary" class="site-main">
 
-		<?php if (have_posts()) :
+		<?php 
+		if ( have_posts() ) :
 			get_search_form();
 
 			global $wp_query;
-			echo '<strong>' . $wp_query->found_posts . '</strong> ' . _x('results', 'search result count');
-		?>
+			echo esc_html( '<strong>' . $wp_query->found_posts . '</strong> ' . _x( 'results', 'search result count', 'hfh-theme' ) );
+			?>
 
 			<div class="site-teasers">
 				<?php
 				/* Start the Loop */
-				while (have_posts()) :
+				while ( have_posts() ) :
 					the_post();
-				?>
+					?>
 					<div class="teaser-row">
 						<div class="teaser">
 							<?php
@@ -35,23 +35,23 @@ get_header();
 							 * If you want to overload this in a child theme then include a file
 							 * called content-search.php and that will be used instead.
 							 */
-							get_template_part('template-parts/content', 'search');
+							get_template_part( 'template-parts/content', 'search' );
 							?>
 						</div>
 					</div>
-				<?php
+					<?php
 
 				endwhile;
 
 				?>
 			</div>
-		<?php
+			<?php
 
 			the_posts_navigation();
 
 		else :
 
-			get_template_part('template-parts/content', 'none');
+			get_template_part( 'template-parts/content', 'none' );
 
 		endif;
 		?>

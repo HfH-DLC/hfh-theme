@@ -56,6 +56,6 @@ function hfh_theme_customize_partial_blogdescription() {
  * Binds JS handlers to make Theme Customizer preview reload changes asynchronously.
  */
 function hfh_theme_customize_preview_js() {
-	wp_enqueue_script( 'hfh-theme-customizer', get_template_directory_uri() . '/js/customizer.js', array( 'customize-preview' ), _S_VERSION, true );
+	wp_enqueue_script( 'hfh-theme-customizer', get_template_directory_uri() . '/js/customizer.js', array( 'customize-preview' ), HFH_THEME_VERSION, true );
 }
 add_action( 'customize_preview_init', 'hfh_theme_customize_preview_js' );

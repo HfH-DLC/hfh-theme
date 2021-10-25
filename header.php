@@ -1,5 +1,4 @@
 <?php
-
 /**
  * The header for our theme
  *
@@ -15,7 +14,7 @@
 <html <?php language_attributes(); ?>>
 
 <head>
-	<meta charset="<?php bloginfo('charset'); ?>">
+	<meta charset="<?php bloginfo( 'charset' ); ?>">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="profile" href="https://gmpg.org/xfn/11">
 
@@ -25,7 +24,7 @@
 <body <?php body_class(); ?>>
 	<?php wp_body_open(); ?>
 	<div id="page" class="site">
-		<a class="skip-link screen-reader-text" href="#primary"><?php esc_html_e('Skip to content', 'hfh-theme'); ?></a>
+		<a class="skip-link screen-reader-text" href="#primary"><?php esc_html_e( 'Skip to content', 'hfh-theme' ); ?></a>
 
 		<header id="masthead" class="site-header">
 			<div class="site-header-wrapper">
@@ -34,20 +33,25 @@
 					the_custom_logo();
 					?>
 
-					<!-- 				<?php if (is_front_page() && is_home()) :
-											?>
-					<h1 class="site-title"><a href="<?php echo esc_url(home_url('/')); ?>" rel="home"><?php bloginfo('name'); ?></a></h1>
-				<?php
+					<!-- 				
+					<?php 
+					if ( is_front_page() && is_home() ) :
+						?>
+					<h1 class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>
+						<?php
 											else :
-				?>
-					<p class="site-title"><a href="<?php echo esc_url(home_url('/')); ?>" rel="home"><?php bloginfo('name'); ?></a></p>
-				<?php
+												?>
+					<p class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></p>
+												<?php
 											endif;
-											$hfh_theme_description = get_bloginfo('description', 'display');
-											if ($hfh_theme_description || is_customize_preview()) :
-				?>
-					<p class="site-description"><?php echo $hfh_theme_description; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped 
-												?></p>
+											$hfh_theme_description = get_bloginfo( 'description', 'display' );
+											if ( $hfh_theme_description || is_customize_preview() ) :
+												?>
+					<p class="site-description">
+												<?php 
+												echo $hfh_theme_description; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped 
+												?>
+												</p>
 				<?php endif; ?> -->
 
 				</div><!-- .site-branding -->
@@ -58,22 +62,22 @@
 						<span aria-hidden="true"></span>
 						<span aria-hidden="true"></span>
 						<span aria-hidden="true"></span>
-						<strong class="button-text"><?php esc_html_e('Menu', 'hfh-theme'); ?></strong>
+						<strong class="button-text"><?php esc_html_e( 'Menu', 'hfh-theme' ); ?></strong>
 					</button>
 					<?php
 					wp_nav_menu(
 						array(
-							'menu' => 'menu-header',
+							'menu'           => 'menu-header',
 							'theme_location' => 'menu-header',
 							'menu_id'        => 'primary-menu',
 						)
 					);
 					?>
-					<button class="site-search-toggle" type="button" aria-controls="site-search" aria-expanded="false"><span class="sr-only"><?php echo _x('Toggle Search', 'toggle site search visibility') ?></span></button>
-					<?php get_search_form() ?>
+					<button class="site-search-toggle" type="button" aria-controls="site-search" aria-expanded="false"><span class="sr-only"><?php echo esc_html_x( 'Toggle Search', 'toggle site search visibility', 'hfh-theme' ); ?></span></button>
+					<?php get_search_form(); ?>
 				</nav><!-- #site-navigation -->
 			</div>
 			<div id="site-search">
-				<?php get_search_form() ?>
+				<?php get_search_form(); ?>
 			</div>
 		</header><!-- #masthead -->
