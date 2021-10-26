@@ -6,3 +6,4 @@ style.css.map
 .DS_Store
 dist
 css
+languages/*-backup-*
