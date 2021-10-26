@@ -98,8 +98,6 @@ a {
 }
 
 .entry-content {
-	overflow: auto;
-
 	p a {
 		font-weight: bold;
 	}
@@ -193,62 +191,55 @@ h6 {
 	}
 }
 
-/*
+/*	
 * Lists
 */
 
-.site-main,
-.widget-area {
+ol {
+	li {
+		&::marker {
+			color: $thunderbird-red;
+			font-size: 12px;
+			font-weight: bold;
+		}
+	}
+}
+
+ul {
+	li {
+		&::marker {
+			font-size: 12px;
+			color: $thunderbird-red;
+		}
+	}
+}
+
+.site-main {
 	ol {
-		counter-reset: ol-counter;
 		margin: 0 0 32px 0;
-		padding: 0;
-		list-style: none;
+		padding-left: 14px;
 
 		li {
-			counter-increment: ol-counter;
-			position: relative;
 			margin-bottom: 16px;
-			padding-left: 20px;
-
-			&::before {
-				content: counter(ol-counter, decimal) ".";
-				display: block;
-				font-size: 12px;
-				line-height: 2.6666666667;
-				font-weight: bold;
-				text-transform: uppercase;
-				color: $thunderbird-red;
-				position: absolute;
-				left: 0;
-				top: 0;
-			}
+			padding-left: 8px;
 		}
 	}
 
 	ul {
 		margin: 0 0 32px 0;
-		padding: 0;
-		list-style: none;
+		padding-left: 11px;
 
 		li {
-			position: relative;
 			margin-bottom: 16px;
-			padding-left: 20px;
-
-			&::before {
-				content: "​";
-				display: block;
-				width: 4px;
-				height: 4px;
-				position: absolute;
-				left: 0px;
-				top: 14px;
-				overflow: hidden;
-				border-radius: 50%;
-				background: $thunderbird-red;
-			}
+			padding-left: 10px;
 		}
+	}
+}
+
+.widget-area {
+	ol, ul {
+		padding-left: 8px;
+		margin: 0;
 	}
 }
 
@@ -270,7 +261,7 @@ blockquote p {
 
 blockquote {
 	border-left: 2px solid $fantasy-plain;
-	padding-left: 1em;	
+	padding-left: 1em;
 }
 
 /*
@@ -861,6 +852,27 @@ blockquote {
 }
 
 @media screen and (max-width: 37.5em) {
+	.search-form,
+	.wp-block-search {
+		padding: 0;
+		margin: 12px 0;
+	}
+
+	.search-form label,
+	.wp-block-search .wp-block-search__label {
+		@include sr-only;
+	}
+
+	.search-submit,
+	.wp-block-search .wp-block-search__button {
+		width: 56px;
+		padding: 0;
+		height: 56px;
+		text-indent: 9999px;
+	}
+}
+
+.widget_search {
 	.search-form,
 	.wp-block-search {
 		padding: 0;
