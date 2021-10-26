@@ -157,9 +157,16 @@ if ( ! function_exists( 'hfh_theme_categories' ) ) :
 	 * Displays a comma-separated list of categories
 	 */
 	function hfh_theme_categories() {
-		echo '<span class="cat-links">';
-		the_category( ', ' );
-		echo '</span>';
+		$categories = get_categories();	
+		if(count($categories) > 1) {
+			$categories_list = get_the_category_list( __( ', ', 'hfh-theme' ) );
+			if ( $categories_list ) {
+				printf(
+					'<span class="cat-links">%s</span>',
+					$categories_list // phpcs:ignore WordPress.Security.EscapeOutput
+				);
+			}
+		}
 	}
 
 endif;
