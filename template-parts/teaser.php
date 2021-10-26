@@ -9,12 +9,13 @@
 
 <article id="post-<?php the_ID(); ?>" <?php post_class( 'post-teaser' ); ?>>
 	<a class="post-teaser__link" href="<?php the_permalink(); ?>">
+	<?php if ( has_post_thumbnail() || get_theme_mod( 'hfh_display_teaser_image_placeholder', true ) ) : ?>
 		<div class="post-teaser__image">
 			<?php if ( has_post_thumbnail() ) : ?>
 				<?php the_post_thumbnail(); ?>
 			<?php endif; ?>
 		</div>
-
+		<?php endif; ?>
 		<div class="post-teaser__text">
 			<div class="post-teaser__date">
 				<?php hfh_theme_posted_on(); ?>

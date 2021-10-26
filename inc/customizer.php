@@ -1,9 +1,18 @@
 <?php
 /**
- * HfH Theme Theme Customizer
+ * HfH Theme Customizer
  *
  * @package HfH_Theme
  */
+
+/**
+ * Sanitize checkbox input. Returns true if checkbox is checked.
+ * 
+ * @param bool $checked The input value to be sanitized.
+ */
+function hfh_theme_sanitize_checkbox( $checked ) {
+	return ( ( isset( $checked ) && true === $checked ) ? true : false );
+}
 
 /**
  * Add postMessage support for site title and description for the Theme Customizer.
@@ -31,6 +40,31 @@ function hfh_theme_customize_register( $wp_customize ) {
 			)
 		);
 	}
+
+	$wp_customize->add_setting(
+		'hfh_display_teaser_image_placeholder',
+		array(
+			'default'           => true,
+			'sanitize_callback' => 'hfh_theme_sanitize_checkbox',
+		) 
+	);
+
+	$wp_customize->add_section(
+		'hfh-theme',
+		array(
+			'title'       => __( 'HfH Theme Options', 'hfh-theme' ),
+			'description' => __( 'Options specific to the HfH Theme', 'hfh-theme' ),
+		) 
+	);
+
+	$wp_customize->add_control(
+		'hfh_display_teaser_image_placeholder',
+		array(
+			'label'   => __( 'Display Teaser Image Placeholder', 'hfh-theme' ),
+			'type'    => 'checkbox',
+			'section' => 'hfh-theme',
+		) 
+	);
 }
 add_action( 'customize_register', 'hfh_theme_customize_register' );
 
