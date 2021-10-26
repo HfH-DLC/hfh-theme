@@ -32,7 +32,7 @@
     "lint:scss": "wp-scripts lint-style 'sass/**/*.scss'",
     "lint:js": "wp-scripts lint-js 'js/*.js'",
     "prefix": "postcss css/index.css --use=autoprefixer --map=false --output=css/index.css",
-    "build": "npm run compile:css & npm run prefix",
-    "bundle": "npm run build && dir-archiver --src . --dest ../_s.zip --exclude .DS_Store .stylelintrc.json .eslintrc .git .gitattributes .github .gitignore README.md composer.json composer.lock node_modules vendor package-lock.json package.json .travis.yml phpcs.xml.dist sass style.css.map"
+    "build": "npm run compile:css && npm run prefix",
+    "bundle": "mkdir -p dist && rm -rf dist/* && npm run build && dir-archiver --src . --dest dist/hfh-theme.zip --exclude .DS_Store .stylelintrc.json .eslintrc .git .gitattributes .github .gitignore README.md composer.json composer.lock node_modules vendor package-lock.json package.json .travis.yml phpcs.xml.dist sass style.css.map dist"
   }
 }
