@@ -21,7 +21,7 @@
 			printf(
 				'<p>' . wp_kses(
 					/* translators: 1: link to WP admin new post page. */
-					__( 'Ready to publish your first post? <a href="%1$s">Get started here</a>.', 'hfh-theme' ),
+					__( 'Ready to get started? <a href="%1$s">Publish your first post.</a>', 'hfh-theme' ),
 					array(
 						'a' => array(
 							'href' => array(),

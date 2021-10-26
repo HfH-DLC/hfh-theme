@@ -17,7 +17,9 @@ get_header();
 			get_search_form();
 
 			global $wp_query;
-			echo '<strong>' . esc_html( $wp_query->found_posts ) . '</strong> ' . esc_html_x( 'results', 'search result count', 'hfh-theme' );
+			$hfh_theme_results_count = $wp_query->found_posts;
+			
+			echo '<strong>' . esc_html( $hfh_theme_results_count ) . '</strong> ' . esc_html( _nx( 'result', 'results', $hfh_theme_results_count, 'search result count', 'hfh-theme' ) );
 			?>
 
 			<div class="site-teasers">
