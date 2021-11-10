@@ -15,9 +15,9 @@
 	<div class="pre-footer">
 		<div class="pre-footer__content">
 		<?php echo wp_get_attachment_image( get_theme_mod( 'hfh_footer_logo' ), array( 300, 300 ) ); ?>
-		<div><?php echo wp_kses_post( wpautop( get_theme_mod( 'hfh_address' ) ) ); ?></div>
+		<div class="pre-footer__address"><?php echo wp_kses_post( wpautop( get_theme_mod( 'hfh_address' ) ) ); ?></div>
 
-		<div class="footer__social">
+		<div class="pre-footer__social">
 				<nav role="navigation" >
 					<ul>
 						<?php if ( get_theme_mod( 'hfh_facebook' ) ) { ?>
