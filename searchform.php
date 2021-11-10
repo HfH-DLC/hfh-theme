@@ -7,8 +7,9 @@
  * @package HfH_Theme
  */
 
+$hfh_theme_aria_label = ! empty( $args['aria_label'] ) ? 'aria-label="' . esc_attr( $args['aria_label'] ) . '"' : '';
 ?>
-<form role = 'search' <?php echo esc_attr( $aria_label ); ?> method="get" class="search-form" action="<?php echo esc_url( home_url( '/' ) ); ?>">
+<form role = 'search' <?php echo esc_attr( $hfh_theme_aria_label ); ?> method="get" class="search-form" action="<?php echo esc_url( home_url( '/' ) ); ?>">
 	<label class="label">
 		<?php echo esc_html_x( 'Search', 'label', 'hfh-theme' ); ?></label>
 	<input type="search" class="search-field" placeholder="<?php echo esc_attr_x( 'Search &hellip;', 'placeholder', 'hfh-theme' ); ?>" value="<?php echo get_search_query(); ?>" name="s" />
