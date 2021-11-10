@@ -140,6 +140,18 @@ function hfh_theme_customize_register( $wp_customize ) {
 	);
 
 	$wp_customize->add_control(
+		new WP_Customize_Media_Control(
+			$wp_customize,
+			'hfh_footer_logo', 
+			array(
+				'label'     => __( 'Footer Logo', 'hfh-theme' ),
+				'section'   => 'hfh-theme',
+				'mime_type' => 'image',
+			) 
+		)
+	);
+
+	$wp_customize->add_control(
 		new HfH_Theme_TinyMCE_Custom_Control(
 			$wp_customize,
 			'hfh_address',
@@ -202,18 +214,6 @@ function hfh_theme_customize_register( $wp_customize ) {
 			'type'    => 'url',
 			'section' => 'hfh-theme',
 		) 
-	);
-
-	$wp_customize->add_control(
-		new WP_Customize_Media_Control(
-			$wp_customize,
-			'hfh_footer_logo', 
-			array(
-				'label'     => __( 'Footer Logo', 'hfh-theme' ),
-				'section'   => 'hfh-theme',
-				'mime_type' => 'image',
-			) 
-		)
 	);
 
 	$wp_customize->add_control(
