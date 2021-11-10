@@ -105,6 +105,15 @@ a {
     overflow:auto;
 }
 
+.pre-footer__address a {
+    color: $white;
+    text-decoration: underline;
+    &:focus,
+    &:hover {
+        color: $orange-red;
+    }
+}
+
 
 /*
 * Buttons
@@ -304,10 +313,10 @@ ul {
     }
     ul {
         margin: 0 0 32px 0;
-        padding-left: 11px;
+        padding-left: 16px;
         li {
             margin-bottom: 16px;
-            padding-left: 10px;
+            padding-left: 5px;
         }
     }
 }
@@ -534,6 +543,19 @@ blockquote {
     }
 }
 
+.site-branding {
+    margin-right: 80px;
+}
+
+.site-title {
+    margin-bottom: 4px;
+}
+
+.site-description {
+    font-size: 16px;
+    margin-bottom: 0;
+}
+
 
 /*
 * Footer
@@ -614,22 +636,30 @@ blockquote {
     }
     .entry-header {
         .entry-meta {
-            margin-bottom: 24px;
-            display: flex;
+            margin-bottom: 10px;
+            @media screen and (min-width: 37.5em) {
+                margin-bottom: 24px;
+                display: flex;
+            }
             .cat-links {
                 display: inline-block;
                 vertical-align: top;
                 padding-bottom: 1px;
-                font-size: 16px;
+                font-size: 12px;
                 line-height: 1.5;
                 font-weight: bold;
                 text-transform: uppercase;
                 color: $link-color;
+                @media screen and (min-width: 37.5em) {
+                    font-size: 16px;
+                }
             }
             .posted-on {
                 margin-left: auto;
-                padding-left: 16px;
                 white-space: nowrap;
+                @media screen and (min-width: 37.5em) {
+                    padding-left: 16px;
+                }
                 .entry-date {
                     font-size: 16px;
                     line-height: 1.625;
@@ -664,6 +694,21 @@ blockquote {
                 background-size: 100% 100%;
                 margin-right: -202px;
             }
+        }
+    }
+}
+
+
+/*
+* Page
+*/
+
+.page-template-default {
+    .post-thumbnail {
+        position: relative;
+        margin-bottom: 0;
+        @media screen and(min-width: 37.5em) {
+            margin-bottom: 90px;
         }
     }
 }

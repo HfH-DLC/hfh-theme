@@ -30,7 +30,7 @@ if ( ! function_exists( 'hfh_theme_posted_on' ) ) :
 			$time_string
 		);
 
-		echo '<span class="posted-on">' . $posted_on . '</span>'; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+		echo '<div class="posted-on">' . $posted_on . '</div>'; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 
 	}
 endif;
@@ -62,7 +62,7 @@ if ( ! function_exists( 'hfh_theme_entry_footer' ) ) :
 			$categories_list = get_the_category_list( esc_html__( ', ', 'hfh-theme' ) );
 			if ( $categories_list ) {
 				/* translators: 1: list of categories. */
-				printf( '<span class="cat-links">' . esc_html__( 'Posted in %1$s', 'hfh-theme' ) . '</span>', $categories_list ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+				printf( '<div class="cat-links">' . esc_html__( 'Posted in %1$s', 'hfh-theme' ) . '</div>', $categories_list ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 			}
 
 			/* translators: used between list items, there is a space after the comma */
