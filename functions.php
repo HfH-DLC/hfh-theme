@@ -89,6 +89,8 @@ if ( ! function_exists( 'hfh_theme_setup' ) ) :
 				'flex-height' => true,
 			)
 		);
+
+		add_theme_support( 'responsive-embeds' );
 	}
 endif;
 add_action( 'after_setup_theme', 'hfh_theme_setup' );
@@ -108,6 +110,14 @@ function hfh_theme_widgets_init() {
 			'after_widget'  => '</section>',
 			'before_title'  => '<h2 class="widget-title">',
 			'after_title'   => '</h2>',
+		)
+	);
+	register_sidebar(
+		array(
+			'name'          => esc_html__( 'Footer Widgets', 'hfh-theme' ),
+			'id'            => 'footer-widgets',
+			'before_widget' => '<div>',
+			'after_widget'  => '</div>',
 		)
 	);
 	register_sidebar(
