@@ -23,24 +23,31 @@ get_header();
 			$hfh_theme_next_post         = get_next_post();
 			$hfh_theme_next_post_url     = get_permalink( $hfh_theme_next_post );
 
-			echo '<div class="hfh-post-navigation">';
-			if ( $hfh_theme_previous_post ) {
-				echo '<div class="hfh-post-navigation__link previous-post">';
+
+			?>
+			<div class="single-posts-navigation">
+			<?php if ( $hfh_theme_previous_post ) : ?>
+				<div class="single-posts-navigation__link previous-post"><a href="<?php echo esc_url( $hfh_theme_previous_post_url ); ?>">
+				<?php 
 				if ( has_post_thumbnail( $hfh_theme_previous_post ) ) {
-					echo '<a href="' . esc_url( $hfh_theme_previous_post_url ) . '">' . get_the_post_thumbnail( $hfh_theme_previous_post->ID, array( 75, 75 ) ) . '</a>';                    
+					echo get_the_post_thumbnail( $hfh_theme_previous_post->ID );                    
+				} 
+				?>
+				<div><span class="arrow  arrow--prev" aria-hidden="true"></span><?php esc_html_e( 'Previous', 'hfh-theme' ); ?></div><div><?php echo esc_html( get_the_title( $hfh_theme_previous_post->ID ) ); ?></div></a></div>
+				<?php 
+			endif; 
+			if ( $hfh_theme_next_post ) : 
+				?>
+				<div class="single-posts-navigation__link next-post"><a href="<?php echo esc_url( $hfh_theme_next_post_url ); ?>">
+				<?php 
+				if ( has_post_thumbnail( $hfh_theme_next_post ) ) { 
+					echo get_the_post_thumbnail( $hfh_theme_next_post->ID );
 				}
-				echo '<a href="' . esc_url( $hfh_theme_previous_post_url ) . '"><div><span class="arrow  arrow--prev" aria-hidden="true" />' . esc_html__( 'Previous', 'hfh-theme' ) . '</div><div>' . esc_html( get_the_title( $hfh_theme_previous_post->ID ) ) . '</div></a></div>';
-			}
-
-			if ( $hfh_theme_next_post ) {
-				echo '<div class="hfh-post-navigation__link next-post">';
-				if ( has_post_thumbnail( $hfh_theme_next_post ) ) {
-					echo '<a href="' . esc_url( $hfh_theme_next_post_url ) . '">' . get_the_post_thumbnail( $hfh_theme_next_post->ID, array( 75, 75 ) ) . '</a>';
-				}
-				echo '<a href="' . esc_url( $hfh_theme_next_post_url ) . '"><div><span class="arrow" aria-hidden="true" />' . esc_html__( 'Next', 'hfh-theme' ) . '</div><div>' . esc_html( get_the_title( $hfh_theme_next_post->ID ) ) . '</div></a></div>';
-			}
-			echo '</div>';
-
+				?>
+				<div><span class="arrow arrow--next" aria-hidden="true" ></span><?php esc_html_e( 'Next', 'hfh-theme' ); ?></div><div><?php echo esc_html( get_the_title( $hfh_theme_next_post->ID ) ); ?></div></a></div>
+			<?php endif; ?>
+			</div>
+			<?php 
 			$hfh_theme_related_query = hfh_theme_related_posts( get_the_ID(), 3 );
 
 			if ( $hfh_theme_related_query->have_posts() ) : 
@@ -79,7 +86,7 @@ get_header();
 		?>
 
 	</main><!-- #main -->
-	<?php get_sidebar(); ?>
+			<?php get_sidebar(); ?>
 </div>
-<?php
-get_footer();
+			<?php
+			get_footer();
