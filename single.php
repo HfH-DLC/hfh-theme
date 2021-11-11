@@ -17,6 +17,7 @@ get_header();
 			the_post();
 			
 			get_template_part( 'template-parts/content', get_post_type() );
+			
 			$hfh_theme_previous_post     = get_previous_post();
 			$hfh_theme_previous_post_url = get_permalink( $hfh_theme_previous_post );
 			$hfh_theme_next_post         = get_next_post();
@@ -40,7 +41,41 @@ get_header();
 			}
 			echo '</div>';
 
-		endwhile; // End of the loop.
+			$hfh_theme_related_query = hfh_theme_related_posts( get_the_ID(), 3 );
+
+			if ( $hfh_theme_related_query->have_posts() ) : 
+				?>
+				<div class="hfh-related-posts">
+					<div class="hfh-related-posts__label"><?php echo esc_html__( 'Related Posts', 'hfh-theme' ); ?></div>
+					<ul class="hfh-related-posts__list">
+					<?php 
+					while ( $hfh_theme_related_query->have_posts() ) :
+						$hfh_theme_related_query->the_post(); 
+						?>
+						<li>
+						<a href="<?php the_permalink(); ?>">
+						<div class="hfh-related-posts__link">
+							<?php 
+							if ( has_post_thumbnail() ) {
+								the_post_thumbnail();
+							} 
+							?>
+							<?php the_title(); ?>
+							<?php hfh_theme_posted_on(); ?>
+						</div>
+						</a>
+						</li>
+						<?php
+						endwhile;
+					?>
+					</ul>
+				</div>
+				<?php 
+				endif; 
+				
+				wp_reset_postdata();
+
+				endwhile; // End of the loop.
 		?>
 
 	</main><!-- #main -->
