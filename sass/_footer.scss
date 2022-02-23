@@ -1,3 +1,62 @@
+/*
+* Footer
+*/
+
+.site-footer {
+    margin-top: 137px;
+    p {
+        font-size: 20px;
+    }
+    .pre-footer {
+        background-color: $off-black;
+        color: $white;
+        padding: 30px 0;
+        .pre-footer__content {
+            display: grid;
+            @media screen and (min-width: 740px) {
+                grid-template-columns: repeat(3, 1fr);
+                grid-gap: 5%;
+            }
+        }
+        .pre-footer__address a {
+            color: $white;
+        }
+    }
+    .footer {
+        background-color: $black;
+        color: $white;
+        padding: 30px 0;
+        .footer__content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 14px;
+            line-height: 1.4285714286;
+            @media screen and (min-width: 740px) {
+                flex-direction: row-reverse;
+            }
+            p {
+                margin: 0;
+            }
+            nav ul {
+                list-style: none;
+                margin: 0;
+                padding: 0;
+                @media screen and (min-width: 740px) {
+                    display: flex;
+                    li+li {
+                        margin-left: 28px;
+                    }
+                }
+                li a {
+                    color: $white;
+                    font-weight: bold;
+                }
+            }
+        }
+    }
+}
+
 .pre-footer__social {
     nav {
         &::after {
@@ -12,6 +71,11 @@
             list-style: none;
             margin: 0;
             padding: 0;
+            max-width: 320px;
+            float: left;
+            @media screen and (min-width: 60rem) {
+                float: right;
+            }
             li {
                 padding: 0 0 2px 2px;
                 float: left;
@@ -26,7 +90,7 @@
                     text-decoration: none;
                     transition: background .25s ease 0s;
                     &:hover {
-                        background: $orange-red;
+                        background: $thunderbird-red;
                     }
                     &::before {
                         content: "";

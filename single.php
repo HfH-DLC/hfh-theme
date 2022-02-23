@@ -33,7 +33,7 @@ get_header();
 					echo get_the_post_thumbnail( $hfh_theme_previous_post->ID );                    
 				} 
 				?>
-				<div><span class="arrow  arrow--prev" aria-hidden="true"></span><?php esc_html_e( 'Previous', 'hfh-theme' ); ?></div><div><?php echo esc_html( get_the_title( $hfh_theme_previous_post->ID ) ); ?></div></a></div>
+				<div><span class="arrow  arrow--prev" aria-hidden="true"><?php esc_html_e( 'Previous', 'hfh-theme' ); ?></span></div><div><?php echo esc_html( get_the_title( $hfh_theme_previous_post->ID ) ); ?></div></a></div>
 				<?php 
 			endif; 
 			if ( $hfh_theme_next_post ) : 
@@ -44,7 +44,7 @@ get_header();
 					echo get_the_post_thumbnail( $hfh_theme_next_post->ID );
 				}
 				?>
-				<div><span class="arrow arrow--next" aria-hidden="true" ></span><?php esc_html_e( 'Next', 'hfh-theme' ); ?></div><div><?php echo esc_html( get_the_title( $hfh_theme_next_post->ID ) ); ?></div></a></div>
+				<div><span class="arrow arrow--next" aria-hidden="true" ><?php esc_html_e( 'Next', 'hfh-theme' ); ?></span></div><div><?php echo esc_html( get_the_title( $hfh_theme_next_post->ID ) ); ?></div></a></div>
 			<?php endif; ?>
 			</div>
 			<?php 
