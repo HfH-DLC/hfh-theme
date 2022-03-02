@@ -1,6 +1,7 @@
 @import "colors";
 @import "fonts";
 @import "utilities";
+@import "navigation";
 @import "footer";
 html {
     font-family: $font-family;
@@ -375,137 +376,6 @@ blockquote {
 .site-header {
     padding-top: 35px;
     margin-bottom: 37px;
-    .main-navigation {
-        padding-top: 2px;
-        @media screen and (min-width: 37.5em) {
-            display: flex;
-        }
-        .search-form {
-            display: none;
-        }
-        &.toggled {
-            border-top: 2px solid $fantasy-plain;
-            border-bottom: 2px solid $fantasy-plain;
-            padding-top: 6px;
-            padding-bottom: 10px;
-            margin-top: 16px;
-            .search-form {
-                display: flex;
-            }
-            @media screen and (min-width: 37.5em) {
-                border-bottom: none;
-                .search-form {
-                    display: none;
-                }
-            }
-        }
-        .menu-toggle {
-            position: absolute;
-            right: 16px;
-            top: 35px;
-            width: 40px;
-            height: 22px;
-            appearance: none;
-            border: none;
-            background: none;
-            padding: 0;
-            margin-bottom: 22px;
-            span {
-                display: block;
-                position: absolute;
-                height: 3px;
-                width: 100%;
-                background: $thunderbird-red;
-                top: 0;
-                left: 0;
-                right: 0;
-                margin-left: auto;
-                margin-right: auto;
-                transition: 0.25s ease-in-out;
-                &:nth-child(2),
-                &:nth-child(4) {
-                    top: 9px;
-                }
-                &:nth-child(3) {
-                    top: 18px;
-                }
-            }
-            .button-text {
-                position: absolute;
-                left: 0;
-                right: 0;
-                top: 100%;
-                margin-top: 2px;
-                font-size: 14px;
-                line-height: 24px;
-                font-weight: 300;
-                letter-spacing: -0.5px;
-                text-transform: uppercase;
-                text-align: center;
-                transition: 0.25s ease-in-out;
-            }
-        }
-        &.toggled {
-            .menu-toggle {
-                span {
-                    &:first-child,
-                    &:nth-child(3) {
-                        width: 0;
-                    }
-                    &:nth-child(2) {
-                        transform: rotate(45deg);
-                    }
-                    &:nth-child(4) {
-                        transform: rotate(-45deg);
-                    }
-                }
-            }
-            .button-text {
-                opacity: 0;
-            }
-        }
-        a {
-            position: relative;
-            display: block;
-            padding: 10px 0;
-            font-size: 16px;
-            line-height: 1.5;
-            color: $navigation-link-color;
-            text-decoration: none;
-            &:focus,
-            &:hover,
-            &[aria-current="page"] {
-                color: $navigation-link-active-color;
-            }
-        }
-        @media screen and (min-width: 37.5em) {
-            li+li {
-                margin-left: 30px;
-            }
-        }
-        .site-search-toggle {
-            display: none;
-            position: relative;
-            width: 22px;
-            height: 22px;
-            overflow: hidden;
-            text-indent: -99999em;
-            margin-top: 10px;
-            margin-bottom: 10px;
-            border: 0;
-            padding: 0;
-            background: url("../images/icon-search_d.svg") no-repeat 0 0;
-            background-size: 100% 100%;
-            cursor: pointer;
-            -webkit-appearance: none;
-            @media screen and (min-width: 37.5em) {
-                display: block;
-                margin-top: 12px;
-                margin-bottom: 12px;
-                margin-left: 28px;
-            }
-        }
-    }
     #site-search {
         display: none;
         &.site-search--active {
