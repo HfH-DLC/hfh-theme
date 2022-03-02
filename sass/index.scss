@@ -67,12 +67,23 @@ body {
 }
 
 .entry-header,
-.entry-content,
 .entry-contact {
     width: 100%;
     max-width: 740px;
     margin-left: auto;
     margin-right: auto;
+}
+
+.entry-content {
+    &>* {
+        width: 100%;
+        max-width: 740px;
+        margin-left: auto;
+        margin-right: auto;
+        &.alignwide {
+            max-width: unset;
+        }
+    }
 }
 
 
@@ -104,7 +115,6 @@ a {
     p a {
         font-weight: bold;
     }
-    overflow:auto;
 }
 
 
@@ -379,7 +389,7 @@ blockquote {
     #site-search {
         display: none;
         &.site-search--active {
-            @media screen and (min-width: 37.5em) {
+            @media screen and (min-width: 64em) {
                 display: block;
                 animation: fadeInFromNone 0.5s ease-in-out;
                 @keyframes fadeInFromNone {
@@ -401,7 +411,7 @@ blockquote {
     }
 }
 
-@media screen and (min-width: 37.5em) {
+@media screen and (min-width: 64em) {
     .site-header-wrapper {
         display: flex;
         justify-content: space-between;
@@ -519,6 +529,12 @@ blockquote {
 /*
 * Page
 */
+
+.page.home {
+    .entry-title {
+        @include sr-only();
+    }
+}
 
 .page-template-default {
     .post-thumbnail {
@@ -771,7 +787,7 @@ blockquote {
     width: 100%;
 }
 
-@media screen and (max-width: 37.5em) {
+@media screen and (max-width: 64em) {
     .search-form,
     .wp-block-search {
         padding: 0;
