@@ -61,6 +61,11 @@
                     this.parentNode.classList.remove("open");
                     this.setAttribute('aria-expanded', "false");
                 } else {
+                    const otherItems = document.querySelectorAll('#primary-menu li.has-sub-menu.open');
+                    for (const item of otherItems) {
+                        item.classList.remove("open");
+                        item.querySelector('a').setAttribute('aria-expanded', "false");
+                    }
                     this.parentNode.classList.add("open");
                     this.setAttribute('aria-expanded', "true");
                 }
