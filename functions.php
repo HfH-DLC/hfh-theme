@@ -205,7 +205,7 @@ add_filter('nav_menu_link_attributes', 'hfh_theme_nav_menu_link_attributes', 10,
 
 function hfh_theme_nav_menu_link_attributes($atts, $menu_item, $args, $depth)
 {
-	if ($args->walker->has_children && $depth === 0) {
+	if (in_array('menu-item-has-children', $menu_item->classes, true) && $depth === 0) {
 		$atts['aria-has-popup'] = "true";
 		$atts['aria-expanded'] = "false";
 	}
