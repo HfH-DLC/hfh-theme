@@ -632,9 +632,11 @@ blockquote {
 
 .post-teaser {
     height: 100%;
+    display: flex;
+    flex-direction: column;
     border: 2px solid $fantasy-plain;
     .post-teaser__link {
-        height: 100%;
+        flex-grow: 1;
         display: flex;
         flex-direction: column;
         &:hover,
@@ -646,6 +648,43 @@ blockquote {
             .post-teaser__arrow {
                 color: $white;
             }
+        }
+    }
+    &.format-video {
+        flex-shrink: 0;
+        .post-teaser__video {
+            background-color: $fantasy-light;
+            overflow: hidden;
+            position: relative;
+            max-width: 100%;
+            height: auto;
+            &>iframe,
+            &>object,
+            &>embed {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+            }
+            padding-bottom: 50%;
+            video {
+                width: 100% !important;
+                height: 100% !important;
+                position: absolute;
+                top: 0;
+                right: 0;
+                bottom: 0;
+                left: 0;
+                background: black;
+            }
+        }
+        .post-teaser__placeholder {
+            padding-bottom: 50%;
+            background-color: $fantasy-light;
+        }
+        .post-teaser__link {
+            height: auto;
         }
     }
     .post-teaser__image {

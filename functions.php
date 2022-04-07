@@ -96,6 +96,8 @@ if (!function_exists('hfh_theme_setup')) :
 
 		//add theme support for full-width blocks
 		add_theme_support('align-wide');
+
+		add_theme_support('post-formats', array('video'));
 	}
 endif;
 add_action('after_setup_theme', 'hfh_theme_setup');
@@ -234,3 +236,113 @@ function hfh_nav_menu_submenu_css_class($classes, $args, $depth)
 	}
 	return $classes;
 }
+
+add_action('admin_enqueue_scripts', 'hfh_theme_enqueue_admin_style');
+
+function hfh_theme_enqueue_admin_style()
+{
+	wp_enqueue_style('admin-styles', get_template_directory_uri() . '/css/admin.css');
+}
+
+//Metabox
+function hfh_add_video_metabox($post)
+{
+	add_meta_box(
+		'hfh-theme-video-metabox',
+		__('Video'),
+		'hfh_render_metabox',
+		'post',
+		'normal',
+		'default'
+	);
+}
+add_action('add_meta_boxes_post', 'hfh_add_video_metabox');
+
+
+function hfh_render_metabox($object)
+{
+	$source = get_post_meta($object->ID, "hfh_theme_video_metabox_source", true);
+	wp_nonce_field('hfh_theme_video_metabox', 'hfh_wpnonce'); ?>
+	<div class="hfh-theme-video-metabox">
+		<label for="hfh-theme-video-metabox-source"><?= __("Choose a video source:") ?></label>
+		<div class="video-metabox-sources">
+			<div><input type="radio" name="hfh-theme-video-metabox-source" id="hfh-theme-video-metabox-source-embed" value="embed" <?= $source == 'embed' ? 'checked' : ''  ?>>
+				<label for="hfh-theme-video-metabox-source-embed"><?= __('Embed external video', 'hfh-theme') ?></label>
+			</div>
+			<div>
+				<input type="radio" name="hfh-theme-video-metabox-source" id="hfh-theme-video-metabox-source-file" value="file" <?= $source == 'file' ? 'checked' : ''  ?>>
+				<label for="hfh-theme-video-metabox-source-file"><?= __('Use video from media library', 'hfh-theme') ?></label>
+			</div>
+		</div>
+		<div class="hfh-theme-video-metabox-embed-wrapper <?= $source == 'embed' ? '' : 'hfh-hidden' ?>">
+			<label for="hfh-theme-video-metabox-embed"><?= __('Enter video embed code:') ?></label><br>
+			<textarea id="hfh-theme-video-metabox-embed" name="hfh-theme-video-metabox-embed"><?= wp_kses_post(get_post_meta($object->ID, "hfh_theme_video_metabox_embed", true)) ?></textarea>
+		</div>
+		<div class="hfh-theme-video-metabox-file-wrapper <?= $source == 'file' ? '' : 'hfh-hidden' ?>">
+			<?php
+			global $post;
+			$saved = get_post_meta($post->ID, 'hfh_theme_video_metabox_file', true);
+			?>
+			<input type="hidden" name="hfh-theme-video-metabox-file" id="hfh-theme-video-metabox-file" value="<?php echo esc_attr($saved); ?>"><br>
+			<div id="hfh-theme-video-metabox-preview">
+				<?php if ($saved) : ?>
+					<video src=<?= $saved ?>></video>
+				<?php endif; ?>
+			</div>
+			<button type="button" class="button<?php if (!$saved) : ?> hfh-hidden<?php endif; ?>" id="hfh-theme-video-metabox-remove" data-media-uploader-target="#hfh-theme-video-metabox-file"><?php _e('Remove Video', 'hfh-theme') ?></button>
+			<button type="button" class="button" id="hfh-theme-video-metabox-upload" data-media-uploader-target="#hfh-theme-video-metabox-file"><?php _e('Select Video', 'hfh-theme') ?></button>
+		</div>
+	</div>
+<?php
+}
+
+
+add_action('save_post', 'hfh_save_meta_box', 10, 2);
+function hfh_save_meta_box($post_id, $post)
+{
+	if (defined('DOING_AUTOSAVE') && DOING_AUTOSAVE)
+		return;
+
+	if (!$_POST['post_type'] == 'post' || !$_POST['post_format'] == 'video' || !current_user_can('edit_post', $post_id)) {
+		return;
+	}
+	if (isset($_POST['hfh_wpnonce']) && wp_verify_nonce($_POST['hfh_wpnonce'], 'hfh_theme_video_metabox') && check_admin_referer('hfh_theme_video_metabox', 'hfh_wpnonce')) {
+		if (isset($_POST['hfh-theme-video-metabox-source'])) {
+			$source = $_POST['hfh-theme-video-metabox-source'];
+			if (!in_array($source, array('embed', 'file'))) {
+				return;
+			}
+			update_post_meta($post_id, 'hfh_theme_video_metabox_source', sanitize_text_field($source));
+			if ($source === 'embed' && isset($_POST['hfh-theme-video-metabox-embed'])) {
+				update_post_meta($post_id, 'hfh_theme_video_metabox_embed', wp_filter_post_kses($_POST['hfh-theme-video-metabox-embed']));
+				delete_post_meta($post_id, 'hfh_theme_video_metabox_file');
+			} else if ($source === 'file' && isset($_POST['hfh-theme-video-metabox-file'])) {
+				update_post_meta($post_id, 'hfh_theme_video_metabox_file', esc_url_raw($_POST['hfh-theme-video-metabox-file']));
+				delete_post_meta($post_id, 'hfh_theme_video_metabox_embed');
+			}
+		}
+	}
+	return;
+}
+
+function hfh_theme_load_admin_scripts($hook)
+{
+	global $post;
+	global $typenow;
+	if ($typenow == 'post' && get_post_format($post) == 'video') {
+		wp_enqueue_media();
+
+		wp_register_script('hfh_theme_media_uploader', get_template_directory_uri() . '/js/media-uploader.js', array('jquery'), HFH_THEME_VERSION);
+		wp_localize_script(
+			'hfh_theme_media_uploader',
+			'phpVars',
+			array(
+				'title' => __('Choose or Upload Media', 'hfh-theme'),
+				'button' => __('Use this media', 'hfh-theme'),
+			)
+		);
+		wp_enqueue_script('hfh_theme_media_uploader');
+	}
+}
+add_action('admin_enqueue_scripts', 'hfh_theme_load_admin_scripts', 10, 1);
+?>
