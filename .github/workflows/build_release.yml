@@ -1,0 +1,36 @@
+name: Build & Release
+
+on:
+  push:
+    branches: [ main ]
+    paths-ignore:
+      .github/**
+  workflow_dispatch:
+
+jobs:
+  build_release:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - id: wp_version
+      env:
+        WP_VERSION_FILE: style.css
+      run: echo "::set-output name=version::$(perl -n -e'/Version:\s*(\d.\d.\d)/ && print $1' $WP_VERSION_FILE)"
+    - name: Check wp_version
+      if:  ${{ !steps.wp_version.outputs.version}}
+      uses: actions/github-script@v3
+      with:
+        script: |
+          core.setFailed('wp_version not set')
+    - name: Build
+      run: |
+          npm i
+          npm run bundle
+    - name: Release
+      uses:  softprops/action-gh-release@v1
+      with:
+        tag_name: ${{ steps.versionstrings.outputs.plugin_version}}
+        name: ${{ steps.versionstrings.outputs.plugin_version}}
+        draft: false
+        prerelease: false
+        files: ./dist/*.zip
