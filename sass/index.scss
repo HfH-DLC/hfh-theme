@@ -447,6 +447,40 @@ blockquote {
 
 .single-post,
 .page-template-default {
+    .post-video {
+        &>video,
+        &>iframe {
+            width: 100%;
+            height: 56.25vw;
+            @media screen and (min-width: 1025px) {
+                height: 32vw;
+            }
+        }
+        position: relative;
+        margin-bottom: 1rem;
+        background-color: $black;
+        &:before {
+            content: "";
+            display: block;
+            position: absolute;
+            top: 0;
+            right: 100%;
+            pointer-events: none;
+            z-index: -1;
+            width: 32px;
+            height: 92px;
+            background: url("../images/trame_left_bottom_mobile.png") no-repeat 0 0;
+            background-size: 100% 100%;
+            margin-right: -16px;
+            @media screen and (min-width: 1025px) {
+                width: 1640px;
+                height: 188px;
+                background: url("../images/trame_left_bottom.png") no-repeat 0 0;
+                background-size: 100% 100%;
+                margin-right: -202px;
+            }
+        }
+    }
     .post-thumbnail+.entry-contact {
         margin-top: -117px;
         margin-bottom: 65px;

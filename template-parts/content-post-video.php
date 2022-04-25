@@ -1,17 +1,34 @@
 <?php
 
 /**
- * Template part for displaying posts
- *
- * @link https://developer.wordpress.org/themes/basics/template-hierarchy/
+ * Template part for displaying posts with video format
  *
  * @package HfH_Theme
  */
+
+$hfh_video_source = get_post_meta(get_the_ID(), "hfh_theme_video_metabox_source", true);
+$hfh_video = '';
+if ($hfh_video_source == 'embed') {
+	$hfh_video = wp_kses(get_post_meta(get_the_ID(), "hfh_theme_video_metabox_embed", true), wp_kses_allowed_html('post'));
+} else if ($hfh_video_source == 'file') {
+	$hfh_video_file = esc_url_raw(get_post_meta(get_the_ID(), "hfh_theme_video_metabox_file", true));
+	$hfh_video = $hfh_video_file ? "<video src='$hfh_video_file' controls></video>" : '';
+}
 
 ?>
 
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 	<header class="entry-header">
+		<?php
+		if ('post' === get_post_type()) :
+		?>
+			<div class="entry-meta">
+				<?php
+				hfh_theme_categories();
+				hfh_theme_posted_on();
+				?>
+			</div><!-- .entry-meta -->
+		<?php endif; ?>
 		<?php
 		if (is_singular()) :
 			the_title('<h1 class="entry-title">', '</h1>');
@@ -21,7 +38,11 @@
 		?>
 	</header><!-- .entry-header -->
 
-	<?php hfh_theme_post_thumbnail(); ?>
+	<div class="post-video">
+		<?php if ($hfh_video) : ?>
+			<?= $hfh_video ?>
+		<?php endif; ?>
+	</div><!-- .post-thumbnail -->
 
 	<div class="entry-contact">
 		<div class="entry-contact__title">

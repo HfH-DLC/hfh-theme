@@ -4,11 +4,27 @@ jQuery(document).ready(function($) {
 
     let frame;
 
-    $('#hfh-theme-video-metabox-remove').click(function(e) {
-        const field = $(this).data('media-uploader-target');
-        $(field).val(null);
-        $('#hfh-theme-video-metabox-preview').empty();
-        $('#hfh-theme-video-metabox-remove').toggleClass('hfh-hidden');
+    $('input[type=radio][name=hfh-theme-video-metabox-source]').change(function() {
+        if (this.value == 'embed') {
+            $("#hfh-theme-video-metabox-embed-wrapper").removeClass("hfh-hidden");
+            $("#hfh-theme-video-metabox-file-wrapper").addClass("hfh-hidden");
+            $("#hfh-theme-video-metabox-file").val(null)
+            $('#hfh-theme-video-metabox-preview').empty()
+        } else if (this.value == 'file') {
+            $("#hfh-theme-video-metabox-file-wrapper").removeClass("hfh-hidden");
+            $("#hfh-theme-video-metabox-embed-wrapper").addClass("hfh-hidden");
+            $("#hfh-theme-video-metabox-embed").val(null)
+
+        }
+    });
+
+    $('input[type=radio][name=post_format]').change(function() {
+        if (this.value == 'video') {
+            $("#hfh-theme-video-metabox").removeClass("hfh-hidden");
+        } else {
+            $("#hfh-theme-video-metabox").addClass("hfh-hidden");
+        }
+
     });
 
     $('#hfh-theme-video-metabox-upload').click(function(e) {
@@ -37,26 +53,10 @@ jQuery(document).ready(function($) {
 
     });
 
-    $('input[type=radio][name=post_format]').change(function() {
-        if (this.value == 'video') {
-            $("#hfh-theme-video-metabox").removeClass("hfh-hidden");
-        } else {
-            $("#hfh-theme-video-metabox").addClass("hfh-hidden");
-        }
-
-    });
-
-    $('input[type=radio][name=hfh-theme-video-metabox-source]').change(function() {
-        if (this.value == 'embed') {
-            $(".hfh-theme-video-metabox-embed-wrapper").removeClass("hfh-hidden");
-            $(".hfh-theme-video-metabox-file-wrapper").addClass("hfh-hidden");
-            $("#hfh-theme-video-metabox-file").val(null)
-            $('#hfh-theme-video-metabox-preview').empty()
-        } else if (this.value == 'file') {
-            $(".hfh-theme-video-metabox-file-wrapper").removeClass("hfh-hidden");
-            $(".hfh-theme-video-metabox-embed-wrapper").addClass("hfh-hidden");
-            $("#hfh-theme-video-metabox-embed").val(null)
-
-        }
+    $('#hfh-theme-video-metabox-remove').click(function(e) {
+        const field = $(this).data('media-uploader-target');
+        $(field).val(null);
+        $('#hfh-theme-video-metabox-preview').empty();
+        $('#hfh-theme-video-metabox-remove').toggleClass('hfh-hidden');
     });
 });

@@ -31,7 +31,7 @@ get_header();
 					<div class="teaser-row">
 						<div class="teaser">
 							<?php
-							get_template_part('template-parts/teaser', get_post_format());
+							hfh_theme_get_template_part('teaser', get_post_type(), get_post_format());
 							?>
 						</div>
 					</div>

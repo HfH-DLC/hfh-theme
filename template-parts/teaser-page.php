@@ -21,9 +21,6 @@ if (get_template_part('template-parts/teasers/' . get_post_type() . '/teaser', g
                 </div>
             <?php endif; ?>
             <div class="post-teaser__text">
-                <div class="post-teaser__date">
-                    <?php hfh_theme_posted_on(); ?>
-                </div>
                 <div class="post-teaser__title">
                     <?php the_title(); ?>
                 </div>

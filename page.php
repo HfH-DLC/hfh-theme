@@ -1,4 +1,5 @@
 <?php
+
 /**
  * The template for displaying all pages
  *
@@ -18,13 +19,13 @@ get_header();
 	<main id="primary" class="site-main">
 
 		<?php
-		while ( have_posts() ) :
+		while (have_posts()) :
 			the_post();
 
-			get_template_part( 'template-parts/content', 'page' );
+			hfh_theme_get_template_part('content', get_post_type(), get_post_format());
 
 			// If comments are open or we have at least one comment, load up the comment template.
-			if ( comments_open() || get_comments_number() ) :
+			if (comments_open() || get_comments_number()) :
 				comments_template();
 			endif;
 
