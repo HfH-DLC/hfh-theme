@@ -29,8 +29,8 @@ jobs:
     - name: Release
       uses:  softprops/action-gh-release@v1
       with:
-        tag_name: ${{ steps.versionstrings.outputs.plugin_version}}
-        name: ${{ steps.versionstrings.outputs.plugin_version}}
+        tag_name: ${{ steps.wp_version.outputs.version}}
+        name: ${{ steps.wp_version.outputs.version}}
         draft: false
         prerelease: false
         files: ./dist/*.zip
