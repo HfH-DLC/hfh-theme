@@ -28,6 +28,7 @@ add_action('wp_enqueue_scripts', 'hfh_theme_scripts');
 
 function hfh_theme_setup()
 {
+    load_theme_textdomain('hfh-theme',  get_template_directory() . '/languages');
     register_nav_menus(
         array(
             'menu-primary' => esc_html__('Primary', 'hfh-theme'),

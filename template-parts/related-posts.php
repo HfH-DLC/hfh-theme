@@ -4,7 +4,7 @@ if ($hfh_theme_related_query->have_posts()) :
 ?>
 
     <div class="hfh-related-posts hfh-w-container">
-        <h2 class="hfh-h2"><?= __('Related posts', 'hfh') ?></h2>
+        <h2 class="hfh-h2"><?= __('Related posts', 'hfh-theme') ?></h2>
         <div class="hfh-related-posts__teasers">
             <?php
             while ($hfh_theme_related_query->have_posts()) :
