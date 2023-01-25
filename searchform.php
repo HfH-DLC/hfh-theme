@@ -1,17 +1,2 @@
-<?php
-/**
- * The template for the search form
- *
- * @link https://developer.wordpress.org/reference/functions/get_search_form/
- *
- * @package HfH_Theme
- */
-
-$hfh_theme_aria_label = ! empty( $args['aria_label'] ) ? 'aria-label="' . esc_attr( $args['aria_label'] ) . '"' : '';
-?>
-<form role = 'search' <?php echo esc_attr( $hfh_theme_aria_label ); ?> method="get" class="search-form" action="<?php echo esc_url( home_url( '/' ) ); ?>">
-	<label class="label">
-		<?php echo esc_html_x( 'Search', 'label', 'hfh-theme' ); ?></label>
-	<input type="search" class="search-field" placeholder="<?php echo esc_attr_x( 'Search &hellip;', 'placeholder', 'hfh-theme' ); ?>" value="<?php echo get_search_query(); ?>" name="s" />
-	<input type="submit" class="search-submit" value="<?php echo esc_attr_x( 'Search', 'submit button', 'hfh-theme' ); ?>" />
-</form>
+<hfh-search-bar method="get" action="<?= esc_url(home_url('/')); ?>" label-text="<?= _ex('Search', 'Search Input Label', 'hfh-theme'); ?>" submit-text="<?= _ex('All results', 'Search Submit Text', 'hfh-theme') ?>" placeholder="<?= _ex('Search &hellip;', 'Search Placeholder Text', 'hfh-theme') ?>" value="<?= get_search_query() ?>" input-name="s">
+</hfh-search-bar>

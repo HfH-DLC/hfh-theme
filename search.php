@@ -1,60 +1,39 @@
 <?php
-
-/**
- * The template for displaying search results pages
- *
- * @link https://developer.wordpress.org/themes/basics/template-hierarchy/#search-result
- *
- * @package HfH_Theme
- */
-
 get_header();
 ?>
-<div class="site-flex">
-	<main id="primary" class="site-main">
+<main id="main" class="hfh-w-container">
+	<h1><?= __('Search', 'hfh-theme') ?></h1>
 
-		<?php
-		if (have_posts()) :
-			get_search_form();
+	<?php
+	get_search_form();
 
-			global $wp_query;
-			$hfh_theme_results_count = $wp_query->found_posts;
+	if (have_posts()) :
+		global $wp_query;
+		$hfh_theme_results_count = $wp_query->found_posts;
+	?>
+		<h2 class="hfh-search-result-count">
+			<strong><?= esc_html($hfh_theme_results_count) ?></strong> <?= esc_html(_nx('result', 'results', $hfh_theme_results_count, 'search result count', 'hfh-theme')) ?>
+		</h2>
+		<ul class="hfh-search__results">
+			<?php
+			while (have_posts()) :
+				the_post();
+			?>
+				<li>
+					<?php get_template_part('template-parts/search-result', get_post_type()) ?>
+				<li>
+				<?php endwhile; ?>
+		</ul>
+	<?php
+		get_template_part('template-parts/pagination');
+	else : ?>
+		<p class="hfh-search__no-results">
+			<?= __('Your search yielded no results.', 'hfh') ?>
+		</p>
+	<?php
+	endif;
+	?>
 
-			echo '<strong>' . esc_html($hfh_theme_results_count) . '</strong> ' . esc_html(_nx('result', 'results', $hfh_theme_results_count, 'search result count', 'hfh-theme'));
-		?>
-
-			<div class="site-teasers">
-				<?php
-				/* Start the Loop */
-				while (have_posts()) :
-					the_post();
-				?>
-					<div class="teaser-row">
-						<div class="teaser">
-							<?php
-							hfh_theme_get_template_part('teaser', get_post_type(), get_post_format());
-							?>
-						</div>
-					</div>
-				<?php
-
-				endwhile;
-
-				?>
-			</div>
-		<?php
-
-			the_posts_navigation();
-
-		else :
-
-			get_template_part('template-parts/content', 'none');
-
-		endif;
-		?>
-
-	</main><!-- #main -->
-	<?php get_sidebar(); ?>
-</div>
+</main>
 <?php
 get_footer();

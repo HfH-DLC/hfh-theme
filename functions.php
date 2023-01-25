@@ -1,252 +1,343 @@
 <?php
 
-/**
- * HfH Theme functions and definitions
- *
- * @link https://developer.wordpress.org/themes/basics/theme-functions/
- *
- * @package HfH_Theme
- */
-
-use HFH\Theme\PostVideoFormat;
 
 if (!defined('HFH_THEME_VERSION')) {
-	// Replace the version number of the theme on each release.
-	define('HFH_THEME_VERSION', '1.0.0');
+    // Replace the version number of the theme on each release.
+    define('HFH_THEME_VERSION', '1.0.0');
 }
 
-if (!function_exists('hfh_theme_setup')) :
-	/**
-	 * Sets up theme defaults and registers support for various WordPress features.
-	 *
-	 * Note that this function is hooked into the after_setup_theme hook, which
-	 * runs before the init hook. The init hook is too late for some features, such
-	 * as indicating support for post thumbnails.
-	 */
-	function hfh_theme_setup()
-	{
-		/*
-		 * Make theme available for translation.
-		 * Translations can be filed in the /languages/ directory.
-		 * If you're building a theme based on HfH Theme, use a find and replace
-		 * to change 'hfh-theme' to the name of your theme in all the template files.
-		 */
-		load_theme_textdomain('hfh-theme', get_template_directory() . '/languages');
-
-		// Add default posts and comments RSS feed links to head.
-		add_theme_support('automatic-feed-links');
-
-		/*
-		 * Let WordPress manage the document title.
-		 * By adding theme support, we declare that this theme does not use a
-		 * hard-coded <title> tag in the document head, and expect WordPress to
-		 * provide it for us.
-		 */
-		add_theme_support('title-tag');
-
-		/*
-		 * Enable support for Post Thumbnails on posts and pages.
-		 *
-		 * @link https://developer.wordpress.org/themes/functionality/featured-images-post-thumbnails/
-		 */
-		add_theme_support('post-thumbnails');
-
-		// This theme uses wp_nav_menu() in one location.
-		register_nav_menus(
-			array(
-				'menu-header' => esc_html__('Primary', 'hfh-theme'),
-				'menu-footer' => esc_html__('Footer', 'hfh-theme'),
-			)
-		);
-
-		/*
-		 * Switch default core markup for search form, comment form, and comments
-		 * to output valid HTML5.
-		 */
-		add_theme_support(
-			'html5',
-			array(
-				'search-form',
-				'comment-form',
-				'comment-list',
-				'gallery',
-				'caption',
-				'style',
-				'script',
-			)
-		);
-
-		// Add theme support for selective refresh for widgets.
-		add_theme_support('customize-selective-refresh-widgets');
-
-		/**
-		 * Add support for core custom logo.
-		 *
-		 * @link https://codex.wordpress.org/Theme_Logo
-		 */
-		add_theme_support(
-			'custom-logo',
-			array(
-				'height'      => 250,
-				'width'       => 250,
-				'flex-width'  => true,
-				'flex-height' => true,
-			)
-		);
-
-		add_theme_support('responsive-embeds');
-
-		//add theme support for full-width blocks
-		add_theme_support('align-wide');
-	}
-endif;
-add_action('after_setup_theme', 'hfh_theme_setup');
-
-/**
- * Register widget area.
- *
- * @link https://developer.wordpress.org/themes/functionality/sidebars/#registering-a-sidebar
- */
-function hfh_theme_widgets_init()
-{
-	register_sidebar(
-		array(
-			'name'          => esc_html__('Sidebar', 'hfh-theme'),
-			'id'            => 'sidebar-1',
-			'description'   => esc_html__('Add widgets here.', 'hfh-theme'),
-			'before_widget' => '<section id="%1$s" class="widget %2$s">',
-			'after_widget'  => '</section>',
-			'before_title'  => '<h2 class="widget-title">',
-			'after_title'   => '</h2>',
-		)
-	);
-	register_sidebar(
-		array(
-			'name'          => esc_html__('Footer Widgets', 'hfh-theme'),
-			'id'            => 'footer-widgets',
-			'before_widget' => '<div>',
-			'after_widget'  => '</div>',
-		)
-	);
-	register_sidebar(
-		array(
-			'name'          => esc_html__('Copyright', 'hfh-theme'),
-			'id'            => 'copyright',
-			'before_widget' => '<div>',
-			'after_widget'  => '</div>',
-		)
-	);
-}
-add_action('widgets_init', 'hfh_theme_widgets_init');
+require(get_template_directory() . '/inc/hfh_theme_category_filter.php');
+require(get_template_directory() . '/inc/hfh_template_functions.php');
 
 /**
  * Enqueue scripts and styles.
  */
 function hfh_theme_scripts()
 {
-	wp_enqueue_style('hfh-theme-style', get_stylesheet_uri(), array(), HFH_THEME_VERSION);
-	wp_style_add_data('hfh-theme-style', 'rtl', 'replace');
+    wp_enqueue_style('hfh-theme-assets-style', get_template_directory_uri() . '/dist/style.css', array(), HFH_THEME_VERSION);
 
-	wp_enqueue_style('hfh-theme-style-index', get_template_directory_uri() . '/css/index.css', array(), HFH_THEME_VERSION);
+    wp_enqueue_script('vue', 'https://unpkg.com/vue@3/dist/vue.global.js', array(), HFH_THEME_VERSION, true);
+    wp_enqueue_script('hfh-theme-assets', get_template_directory_uri() . '/dist/hfh-theme-assets.umd.cjs', array('vue'),  HFH_THEME_VERSION, true);
 
-	wp_enqueue_script('hfh-theme-navigation', get_template_directory_uri() . '/js/navigation.js', array(), HFH_THEME_VERSION, true);
-
-	wp_enqueue_script('hfh-theme-site-search', get_template_directory_uri() . '/js/site-search.js', array('jquery'), HFH_THEME_VERSION, true);
-
-	if (is_singular() && comments_open() && get_option('thread_comments')) {
-		wp_enqueue_script('comment-reply');
-	}
+    $config = array(
+        'homeUrl' => get_home_url(),
+    );
+    wp_localize_script('hfh-theme-assets', 'wp_config', $config);
 }
 add_action('wp_enqueue_scripts', 'hfh_theme_scripts');
 
-/**
- * Custom template tags for this theme.
- */
-require get_template_directory() . '/inc/template-tags.php';
-
-/**
- * Functions which enhance the theme by hooking into WordPress.
- */
-require get_template_directory() . '/inc/template-functions.php';
-
-/**
- * Customizer additions.
- */
-require get_template_directory() . '/inc/customizer.php';
-
-/**
- * Load Jetpack compatibility file.
- */
-if (defined('JETPACK__VERSION')) {
-	require get_template_directory() . '/inc/jetpack.php';
-}
-
-/**
- * Post Video Format
- */
-require get_template_directory() . '/inc/post-video-format.php';
-
-/**
- * Set search results per page
- * 
- * @param  WP_Query $query The WP_Query instance that is about to run.
- */
-function hfh_theme_searchfilter($query)
+function hfh_theme_setup()
 {
+    register_nav_menus(
+        array(
+            'menu-primary' => esc_html__('Primary', 'hfh-theme'),
+            'menu-secondary' => esc_html__('Secondary', 'hfh-theme'),
+            'menu-tertiary' => esc_html__('Tertiary', 'hfh-theme'),
+            'menu-footer' => esc_html__('Footer', 'hfh-theme'),
+        )
+    );
 
-	if ($query->is_search && !is_admin()) {
-		$query->set('posts_per_page', 10);
-	}
-
-	return $query;
+    add_image_size('slider', 1120, 485, true); // (cropped)
 }
-
-add_filter('pre_get_posts', 'hfh_theme_searchfilter');
+add_action('after_setup_theme', 'hfh_theme_setup');
 
 /**
- * 
- * Nav Walker Filters
- * 
+ * Add customizer settings
+ *
+ * @param WP_Customize_Manager $wp_customize Theme Customizer object.
  */
-add_filter('nav_menu_link_attributes', 'hfh_theme_nav_menu_link_attributes', 10, 4);
-
-function hfh_theme_nav_menu_link_attributes($atts, $menu_item, $args, $depth)
+function hfh_theme_customize_register($wp_customize)
 {
-	if (in_array('menu-item-has-children', $menu_item->classes, true) && $depth === 0) {
-		$atts['aria-has-popup'] = "true";
-		$atts['aria-expanded'] = "false";
-	}
+    $wp_customize->add_setting(
+        'hfh_show_slider',
+        array(
+            'default'           => false,
+            'sanitize_callback' => 'wpc_sanitize_checkbox',
+        )
+    );
 
-	return $atts;
+    $wp_customize->add_setting(
+        'hfh_slider_number_of_slides',
+        array(
+            'default'           => 3,
+            'sanitize_callback' => 'hfh_sanitize_positive_number',
+        )
+    );
+
+    $wp_customize->add_setting(
+        'hfh_show_category_filter',
+        array(
+            'default'           => false,
+            'sanitize_callback' => 'wpc_sanitize_checkbox',
+        )
+    );
+
+    $wp_customize->add_setting(
+        'hfh_copyright',
+        array(
+            'default'           => '© Copyright ' . date('Y') . ' HfH',
+            'sanitize_callback' => 'wp_filter_nohtml_kses',
+        )
+    );
+
+    $wp_customize->add_setting(
+        'hfh_tagline',
+        array(
+            'default'           => '',
+            'sanitize_callback' => 'wp_kses_post',
+        )
+    );
+
+    $wp_customize->add_setting(
+        'hfh_contact_address',
+        array(
+            'default'           => '',
+            'sanitize_callback' => 'wp_kses_post',
+        )
+    );
+
+    $wp_customize->add_setting(
+        'hfh_contact_other',
+        array(
+            'default'           => '',
+            'sanitize_callback' => 'wp_kses_post',
+        )
+    );
+
+    $wp_customize->add_setting(
+        'hfh_facebook',
+        array(
+            'default'           => '',
+            'sanitize_callback' => 'esc_url_raw',
+        )
+    );
+
+    $wp_customize->add_setting(
+        'hfh_youtube',
+        array(
+            'default'           => '',
+            'sanitize_callback' => 'esc_url_raw',
+        )
+    );
+
+    $wp_customize->add_setting(
+        'hfh_linkedin',
+        array(
+            'default'           => '',
+            'sanitize_callback' => 'esc_url_raw',
+        )
+    );
+
+    $wp_customize->add_setting(
+        'hfh_instagram',
+        array(
+            'default'           => '',
+            'sanitize_callback' => 'esc_url_raw',
+        )
+    );
+
+    $wp_customize->add_setting(
+        'hfh_twitter',
+        array(
+            'default'           => '',
+            'sanitize_callback' => 'esc_url_raw',
+        )
+    );
+
+    $wp_customize->add_setting(
+        'hfh_issuu',
+        array(
+            'default'           => '',
+            'sanitize_callback' => 'esc_url_raw',
+        )
+    );
+
+    $wp_customize->add_setting(
+        'hfh_display_teaser_image_placeholder',
+        array(
+            'default'           => true,
+            'sanitize_callback' => 'hfh_theme_sanitize_checkbox',
+        )
+    );
+
+    $wp_customize->add_section(
+        'hfh-theme',
+        array(
+            'title'       => __('HfH Theme Options', 'hfh-theme'),
+            'description' => __('Options specific to the HfH Theme', 'hfh-theme'),
+        )
+    );
+
+    $wp_customize->add_control(
+        'hfh_show_slider',
+        array(
+            'type'        => 'checkbox',
+            'label'   => __('Show slider', 'hfh-theme'),
+            'section' => 'hfh-theme',
+        )
+    );
+
+    $wp_customize->add_control(
+        'hfh_slider_number_of_slides',
+        array(
+            'type'        => 'number',
+            'label'   => __('Number of slides', 'hfh-theme'),
+            'section' => 'hfh-theme',
+        )
+    );
+
+    $wp_customize->add_control(
+        'hfh_show_category_filter',
+        array(
+            'type'        => 'checkbox',
+            'label'   => __('Show category filter', 'hfh-theme'),
+            'section' => 'hfh-theme',
+        )
+    );
+
+
+    $wp_customize->add_control(
+        'hfh_tagline',
+        array(
+            'label'   => __('Footer Tagline', 'hfh-theme'),
+            'section' => 'hfh-theme',
+        )
+    );
+
+    $wp_customize->add_control(
+        'hfh_contact_address',
+        array(
+            'label'   => __('Footer Contact Address', 'hfh-theme'),
+            'section' => 'hfh-theme',
+            'type' => 'textarea'
+        )
+    );
+
+
+    $wp_customize->add_control(
+        'hfh_contact_other',
+        array(
+            'label'   => __('Footer Contact Other', 'hfh-theme'),
+            'section' => 'hfh-theme',
+            'type' => 'textarea'
+        )
+    );
+
+    $wp_customize->add_control(
+        'hfh_facebook',
+        array(
+            'label'   => __('Facebook', 'hfh-theme'),
+            'type'    => 'url',
+            'section' => 'hfh-theme',
+        )
+    );
+
+    $wp_customize->add_control(
+        'hfh_youtube',
+        array(
+            'label'   => __('Youtube', 'hfh-theme'),
+            'type'    => 'url',
+            'section' => 'hfh-theme',
+        )
+    );
+
+    $wp_customize->add_control(
+        'hfh_linkedin',
+        array(
+            'label'   => __('LinkedIn', 'hfh-theme'),
+            'type'    => 'url',
+            'section' => 'hfh-theme',
+        )
+    );
+
+    $wp_customize->add_control(
+        'hfh_instagram',
+        array(
+            'label'   => __('Instagram', 'hfh-theme'),
+            'type'    => 'url',
+            'section' => 'hfh-theme',
+        )
+    );
+
+    $wp_customize->add_control(
+        'hfh_twitter',
+        array(
+            'label'   => __('Twitter', 'hfh-theme'),
+            'type'    => 'url',
+            'section' => 'hfh-theme',
+        )
+    );
+
+    $wp_customize->add_control(
+        'hfh_issuu',
+        array(
+            'label'   => __('issuu', 'hfh-theme'),
+            'type'    => 'url',
+            'section' => 'hfh-theme',
+        )
+    );
+
+    $wp_customize->add_control(
+        'hfh_copyright',
+        array(
+            'label'   => __('Copyright Text', 'hfh-theme'),
+            'type'    => 'text',
+            'section' => 'hfh-theme',
+        )
+    );
+}
+add_action('customize_register', 'hfh_theme_customize_register');
+
+
+/**
+ * Checkbox sanitization callback.
+ *
+ * Sanitization callback for 'checkbox' type controls. This callback sanitizes `$checked`
+ * as a boolean value, either true or false.
+ *
+ * @param bool $checked Whether the checkbox is checked.
+ * @return bool Whether the checkbox is checked.
+ */
+function wpc_sanitize_checkbox($checked)
+{
+    // Boolean check.
+    return ((isset($checked) && true == $checked) ? true : false);
 }
 
-add_filter('nav_menu_css_class', 'hfh_theme_nav_menu_css_class', 10, 4);
-
-function hfh_theme_nav_menu_css_class($classes, $menu_item, $args, $depth)
+function hfh_sanitize_positive_number($number, $setting)
 {
-	if (in_array('menu-item-has-children', $classes, true) && $depth === 0) {
-		$classes[] = "has-sub-menu";
-	}
-	return $classes;
+    $number = absint($number);
+    return (1 <= $number ? $number : $setting->default);
 }
 
-add_filter('nav_menu_submenu_css_class', 'hfh_nav_menu_submenu_css_class', 10, 3);
-
-function hfh_nav_menu_submenu_css_class($classes, $args, $depth)
+/**
+ * Get filtered posts for ajax requests
+ */
+function hfh_filter_posts()
 {
-	if ($depth > 0) {
-		foreach (array_keys($classes, 'sub-menu', true) as $key) {
-			unset($classes[$key]);
-		}
-	}
-	return $classes;
+    $args = array(
+        'post_type' => 'post',
+        'post_status' => 'publish',
+        'posts_per_page' => get_option('posts_per_page')
+    );
+    $page = $_REQUEST['page'] ?? 1;
+    $args['paged'] = $page;
+
+    $category_id_string = $_REQUEST['category_ids'] ?? '';
+    if (!empty($category_id_string)) {
+        $category_ids = array_map('intval', explode(',', $category_id_string));
+        if (!empty($category_ids)) {
+            $args['category__and'] = $category_ids;
+        }
+    }
+    $query = new WP_Query($args);
+
+    wp_send_json_success(
+        array(
+            'posts' => hfh_get_teaser_data($query->posts),
+            'totalPageCount' => $query->max_num_pages
+        )
+    );
 }
-
-add_action('admin_enqueue_scripts', 'hfh_theme_enqueue_admin_style');
-
-function hfh_theme_enqueue_admin_style()
-{
-	wp_enqueue_style('admin-styles', get_template_directory_uri() . '/css/admin.css');
-}
-
-PostVideoFormat::get_instance();
+add_action('wp_ajax_filter_posts', 'hfh_filter_posts');
+add_action('wp_ajax_nopriv_filter_posts',  'hfh_filter_posts');
