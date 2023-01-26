@@ -22,6 +22,12 @@ jobs:
       with:
         script: |
           core.setFailed('wp_version not set')
+    - name: Create a .npmrc file for the github private repository
+      uses: FerLuisxd/create-npmrc@3
+      with:
+        org_name: lig0  
+      env:
+        AUTH_TOKEN: ${{ secrets.NPMRC_AUTH_TOKEN }}
     - name: Build
       run: |
           npm i
