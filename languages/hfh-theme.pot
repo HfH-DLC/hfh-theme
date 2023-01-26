@@ -1,187 +1,151 @@
-# Copyright (C) 2021 Matthias Nötzli
+# Copyright (C) 2023 Matthias Nötzli
 # This file is distributed under the GNU General Public License v2 or later.
 msgid ""
 msgstr ""
-"Project-Id-Version: HfH Theme 1.0.0\n"
+"Project-Id-Version: HfH-Theme 1.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/hfh-theme\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2021-10-26T12:39:22+00:00\n"
+"POT-Creation-Date: 2023-01-26T08:29:29+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.5.0\n"
 "X-Domain: hfh-theme\n"
 
 #. Theme Name of the theme
-msgid "HfH Theme"
-msgstr ""
-
 #. Description of the theme
-msgid "HfH Theme, developed by Matthias Nötzli"
+msgid "HfH-Theme"
 msgstr ""
 
 #. Author of the theme
 msgid "Matthias Nötzli"
 msgstr ""
 
-#: 404.php:17
-msgid "Oops! That page can&rsquo;t be found."
+#: 404.php:8
+msgid "Error 404 - Page not found"
 msgstr ""
 
-#: 404.php:21
-msgid "It looks like nothing was found at this location. Maybe try a search?"
+#: 404.php:11
+msgid "Sorry, we could not find the page your were looking for. The page you requested unfortunately is no longer available at this URL. In order to find the content you were looking for, please use the links above or try a search:"
 msgstr ""
 
-#. translators: 1: title.
-#: comments.php:35
-msgid "One thought on &ldquo;%1$s&rdquo;"
+#: 404.php:15
+msgctxt "End of 404 page text"
+msgid "Thank you."
 msgstr ""
 
-#. translators: 1: comment count number, 2: title.
-#: comments.php:41
-msgctxt "comments title"
-msgid "%1$s thought on &ldquo;%2$s&rdquo;"
-msgid_plural "%1$s thoughts on &ldquo;%2$s&rdquo;"
-msgstr[0] ""
-msgstr[1] ""
-
-#: comments.php:68
-msgid "Comments are closed."
-msgstr ""
-
-#. translators: %s: Name of current post. Only visible to screen readers
-#. translators: %s: Name of current post. Only visible to screen readers
-#. translators: %s: Name of current post. Only visible to screen readers
-#: front-page.php:39
-#: template-parts/content-page.php:41
-#: template-parts/content.php:52
-msgid "Continue reading<span class=\"screen-reader-text\"> \"%s\"</span>"
-msgstr ""
-
-#: functions.php:53
+#: functions.php:34
 msgid "Primary"
 msgstr ""
 
-#: functions.php:54
+#: functions.php:35
+msgid "Secondary"
+msgstr ""
+
+#: functions.php:36
+msgid "Tertiary"
+msgstr ""
+
+#: functions.php:37
 msgid "Footer"
 msgstr ""
 
-#: functions.php:104
-msgid "Sidebar"
-msgstr ""
-
-#: functions.php:106
-msgid "Add widgets here."
-msgstr ""
-
-#: functions.php:115
-msgid "Copyright"
-msgstr ""
-
-#: header.php:27
-msgid "Skip to content"
-msgstr ""
-
-#: header.php:65
-msgid "Menu"
-msgstr ""
-
-#: header.php:76
-msgctxt "toggle site search visibility"
-msgid "Toggle Search"
-msgstr ""
-
-#: inc/customizer.php:55
+#: functions.php:167
 msgid "HfH Theme Options"
 msgstr ""
 
-#: inc/customizer.php:56
+#: functions.php:168
 msgid "Options specific to the HfH Theme"
 msgstr ""
 
-#: inc/customizer.php:63
-msgid "Display Teaser Image Placeholder"
+#: functions.php:176
+msgid "Show slider"
 msgstr ""
 
-#. translators: %s: post author.
-#: inc/template-tags.php:45
-msgctxt "post author"
-msgid "by %s"
+#: functions.php:185
+msgid "Number of slides"
 msgstr ""
 
-#. translators: used between list items, there is a space after the comma
-#: inc/template-tags.php:62
-msgid ", "
+#: functions.php:194
+msgid "Show category filter"
 msgstr ""
 
-#. translators: 1: list of categories.
-#: inc/template-tags.php:65
-msgid "Posted in %1$s"
+#: functions.php:203
+msgid "Footer Tagline"
 msgstr ""
 
-#. translators: used between list items, there is a space after the comma
-#: inc/template-tags.php:69
-#: inc/template-tags.php:162
-msgctxt "list item separator"
-msgid ", "
+#: functions.php:211
+msgid "Footer Contact Address"
 msgstr ""
 
-#. translators: 1: list of tags.
-#: inc/template-tags.php:72
-msgid "Tagged %1$s"
+#: functions.php:221
+msgid "Footer Contact Other"
 msgstr ""
 
-#. translators: %s: post title
-#: inc/template-tags.php:82
-msgid "Leave a Comment<span class=\"screen-reader-text\"> on %s</span>"
+#: functions.php:230
+msgid "Facebook"
 msgstr ""
 
-#. translators: %s: Name of current post. Only visible to screen readers
-#: inc/template-tags.php:99
-msgid "Edit <span class=\"screen-reader-text\">%s</span>"
+#: functions.php:239
+msgid "Youtube"
 msgstr ""
 
-#: search.php:22
+#: functions.php:248
+msgid "LinkedIn"
+msgstr ""
+
+#: functions.php:257
+msgid "Instagram"
+msgstr ""
+
+#: functions.php:266
+msgid "Twitter"
+msgstr ""
+
+#: functions.php:275
+msgid "issuu"
+msgstr ""
+
+#: functions.php:284
+msgid "Copyright Text"
+msgstr ""
+
+#: search.php:5
+msgid "Search"
+msgstr ""
+
+#: search.php:15
 msgctxt "search result count"
 msgid "result"
 msgid_plural "results"
 msgstr[0] ""
 msgstr[1] ""
 
-#: searchform.php:13
-msgctxt "label"
+#: searchform.php:1
+msgctxt "Search Input Label"
 msgid "Search"
 msgstr ""
 
-#: searchform.php:14
-msgctxt "placeholder"
+#: searchform.php:1
+msgctxt "Search Submit Text"
+msgid "All results"
+msgstr ""
+
+#: searchform.php:1
+msgctxt "Search Placeholder Text"
 msgid "Search &hellip;"
 msgstr ""
 
-#: searchform.php:15
-msgctxt "submit button"
-msgid "Search"
+#: template-parts/related-posts.php:7
+msgid "Related posts"
 msgstr ""
 
-#: template-parts/content-none.php:14
-msgid "Nothing Found"
+#: template-parts/single-navigation.php:12
+msgid "Previous Post"
 msgstr ""
 
-#. translators: 1: link to WP admin new post page.
-#: template-parts/content-none.php:24
-msgid "Ready to get started? <a href=\"%1$s\">Publish your first post.</a>"
-msgstr ""
-
-#: template-parts/content-none.php:37
-msgid "Sorry, but nothing matched your search terms. Please try again with some different keywords."
-msgstr ""
-
-#: template-parts/content-none.php:44
-msgid "It seems we can&rsquo;t find what you&rsquo;re looking for. Perhaps searching can help."
-msgstr ""
-
-#: template-parts/content.php:37
-msgid "Contact"
+#: template-parts/single-navigation.php:20
+msgid "Next Post"
 msgstr ""

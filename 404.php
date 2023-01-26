@@ -1,32 +1,20 @@
 <?php
-/**
- * The template for displaying 404 pages (not found)
- *
- * @link https://codex.wordpress.org/Creating_an_Error_404_Page
- *
- * @package HfH_Theme
- */
-
 get_header();
 ?>
-<div class="site-flex">
-	<main id="primary" class="site-main">
-
-		<section class="error-404 not-found">
-			<header class="page-header">
-				<h1 class="page-title"><?php esc_html_e( 'Oops! That page can&rsquo;t be found.', 'hfh-theme' ); ?></h1>
-			</header><!-- .page-header -->
-
-			<div class="page-content">
-				<p><?php esc_html_e( 'It looks like nothing was found at this location. Maybe try a search?', 'hfh-theme' ); ?></p>
-
-				<?php
-				get_search_form();
-				?>
-			</div><!-- .page-content -->
-		</section><!-- .error-404 -->
-	</main><!-- #main -->
-	<?php get_sidebar(); ?>
-</div>
+<main id="main" class="hfh-theme-404">
+    <div class="hfh-theme-content hfh-content">
+        <header>
+            <h1>
+                <?= __('Error 404 - Page not found', 'hfh-theme') ?>
+            </h1>
+        </header>
+        <p><?= __("Sorry, we could not find the page your were looking for. The page you requested unfortunately is no longer available at this URL. In order to find the content you were looking for, please use the links above or try a search:", 'hfh-theme') ?></p>
+        <?php
+        get_search_form();
+        ?>
+        <p><?= _x("Thank you.", 'End of 404 page text', 'hfh-theme') ?></p>
+    </div>
+</main>
 <?php
-get_footer();
+get_footer()
+?>

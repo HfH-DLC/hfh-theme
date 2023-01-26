@@ -1,57 +1,34 @@
 <?php
-
-/**
- * The template for displaying archive pages
- *
- * @link https://developer.wordpress.org/themes/basics/template-hierarchy/
- *
- * @package HfH_Theme
- */
-
 get_header();
+global $wp_query;
 ?>
-<div class="site-flex">
-	<main id="primary" class="site-main">
-
-		<?php if (have_posts()) : ?>
-
-			<header class="page-header">
-				<?php
-				the_archive_title('<h1 class="page-title">', '</h1>');
-				the_archive_description('<div class="archive-description">', '</div>');
-				?>
-			</header><!-- .page-header -->
-
-			<div class="site-teasers">
-				<?php
-				/* Start the Loop */
-				while (have_posts()) :
-					the_post();
-				?>
-					<div class="teaser-row">
-						<div class="teaser">
-							<?php
-							hfh_theme_get_template_part('teaser', get_post_type(), get_post_format());
-							?>
-						</div>
-					</div>
-				<?php
-				endwhile;
-				?>
-			</div>
-		<?php
-
-			the_posts_navigation();
-
-		else :
-
-			get_template_part('template-parts/content', 'none');
-
-		endif;
-		?>
-
-	</main><!-- #main -->
-	<?php get_sidebar(); ?>
-</div>
+<main id="main" class="hfh-w-container">
+    <?php
+    if (have_posts()) :
+    ?>
+        <header>
+            <h1><?php the_archive_title(); ?></h1>
+        </header>
+        <posts-provider url='<?= admin_url('admin-ajax.php') ?>' :initial-posts='<?= wp_json_encode(hfh_get_teaser_data($wp_query->posts)) ?>' :initial-total-page-count='<?= $wp_query->max_num_pages ?>' v-slot='slotProps' scroll-target-id="hfh-theme-home-teasers">
+            <ul id="hfh-theme-home-teasers" class="hfh-theme-teasers">
+                <li v-for='post in slotProps.posts' :key='post.id'>
+                    <hfh-teaser :link='post.url' :image-src='post.imageSrc' :image-alt='post.imageAlt' :pretitle='post.pretitle' :title='post.title'>
+                        {{post.excerpt}}
+                    </hfh-teaser>
+                </li>
+            </ul>
+            <p v-if='slotProps.posts.length === 0' class="hfh-search__no-results">
+                Die Suche lieferte keine Ergebnisse.
+            </p>
+            <div id="hfh-theme-pagination">
+                <hfh-pagination v-if="slotProps.totalPageCount > 1" :current-page-number='slotProps.currentPageNumber' :total-page-count='slotProps.totalPageCount' type="Button" @page-selected="slotProps.setPage"></hfh-pagination>
+            </div>
+        </posts-provider>
+    <?php
+    else :
+        get_template_part('template-parts/content', 'none');
+    endif;
+    ?>
+</main>
 <?php
 get_footer();
