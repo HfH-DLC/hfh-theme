@@ -23,14 +23,11 @@ jobs:
         script: |
           core.setFailed('wp_version not set')
     - name: Create a .npmrc file for the github private repository
-      uses: FerLuisxd/create-npmrc@3
-      with:
-        org_name: hfh-dlc  
-      env:
-        AUTH_TOKEN: ${{ secrets.NPMRC_AUTH_TOKEN }}
+      run: |
+        echo "${{ secrets.NPMRC }}" >> .npmrc
     - name: Build
       run: |
-          npm i
+          npm ci
           npm run bundle
     - name: Release
       uses:  softprops/action-gh-release@v1
