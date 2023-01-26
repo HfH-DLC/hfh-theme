@@ -69,11 +69,13 @@
 /*
 * Content
 */
-.hfh-content {
+.hfh-theme-content {
   > * {
     @include content-width();
   }
+}
 
+.hfh-content {
   hyphens: auto;
   overflow-wrap: break-word;
 
@@ -250,6 +252,19 @@
       @media screen and (min-width: 782px) {
         margin-top: 32px;
       }
+    }
+  }
+}
+
+/*
+* 404 Page
+*/
+.hfh-theme-404 {
+  .hfh-search-bar {
+    margin-bottom: 1.625rem;
+
+    @media screen and (min-width: 46.25rem) {
+      margin-bottom: 2rem;
     }
   }
 }

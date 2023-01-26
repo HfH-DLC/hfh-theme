@@ -1,4 +1,4 @@
-<article id="post-<?php the_ID(); ?>" <?php post_class('hfh-content'); ?>>
+<article id="post-<?php the_ID(); ?>" <?php post_class('hfh-content hfh-theme-content'); ?>>
     <header>
         <div class="hfh-article__date"><?php the_date() ?></div>
         <?php
