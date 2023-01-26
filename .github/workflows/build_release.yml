@@ -25,7 +25,7 @@ jobs:
     - name: Create a .npmrc file for the github private repository
       uses: FerLuisxd/create-npmrc@3
       with:
-        org_name: lig0  
+        org_name: hfh-dlc  
       env:
         AUTH_TOKEN: ${{ secrets.NPMRC_AUTH_TOKEN }}
     - name: Build
