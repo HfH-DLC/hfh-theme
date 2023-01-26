@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: HfH-Theme 1.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/hfh-theme\n"
-"POT-Creation-Date: 2023-01-25T14:18:39+00:00\n"
-"PO-Revision-Date: 2023-01-25 15:37+0100\n"
+"POT-Creation-Date: 2023-01-26T08:29:29+00:00\n"
+"PO-Revision-Date: 2023-01-26 09:32+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: de_CH\n"
@@ -24,6 +24,26 @@ msgstr ""
 #. Author of the theme
 msgid "Matthias Nötzli"
 msgstr ""
+
+#: 404.php:8
+msgid "Error 404 - Page not found"
+msgstr "Fehler 404 - Seite nicht gefunden"
+
+#: 404.php:11
+msgid ""
+"Sorry, we could not find the page your were looking for. The page you "
+"requested unfortunately is no longer available at this URL. In order to find "
+"the content you were looking for, please use the links above or try a search:"
+msgstr ""
+"Entschuldigung, wir können die gesuchte Seite nicht finden. Die von Ihnen "
+"angeforderte Seite ist unter dieser URL leider nicht mehr verfügbar. Bitte "
+"verwenden Sie die Links oben, um zum gesuchten Inhalt zu kommen, oder "
+"probieren Sie es mit einer Suche:"
+
+#: 404.php:15
+msgctxt "End of 404 page text"
+msgid "Thank you."
+msgstr "Herzlichen Dank."
 
 #: functions.php:34
 msgid "Primary"
