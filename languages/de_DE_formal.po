@@ -1,0 +1,160 @@
+# Copyright (C) 2023 Matthias Nötzli
+# This file is distributed under the GNU General Public License v2 or later.
+msgid ""
+msgstr ""
+"Project-Id-Version: HfH-Theme 1.0\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/theme/hfh-theme\n"
+"POT-Creation-Date: 2023-01-26T08:29:29+00:00\n"
+"PO-Revision-Date: 2023-01-26 09:32+0100\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: de_CH\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 3.1.1\n"
+"X-Domain: hfh-theme\n"
+
+#. Theme Name of the theme
+#. Description of the theme
+msgid "HfH-Theme"
+msgstr ""
+
+#. Author of the theme
+msgid "Matthias Nötzli"
+msgstr ""
+
+#: 404.php:8
+msgid "Error 404 - Page not found"
+msgstr "Fehler 404 - Seite nicht gefunden"
+
+#: 404.php:11
+msgid ""
+"Sorry, we could not find the page your were looking for. The page you "
+"requested unfortunately is no longer available at this URL. In order to find "
+"the content you were looking for, please use the links above or try a search:"
+msgstr ""
+"Entschuldigung, wir können die gesuchte Seite nicht finden. Die von Ihnen "
+"angeforderte Seite ist unter dieser URL leider nicht mehr verfügbar. Bitte "
+"verwenden Sie die Links oben, um zum gesuchten Inhalt zu kommen, oder "
+"probieren Sie es mit einer Suche:"
+
+#: 404.php:15
+msgctxt "End of 404 page text"
+msgid "Thank you."
+msgstr "Herzlichen Dank."
+
+#: functions.php:34
+msgid "Primary"
+msgstr "Primäres Menü"
+
+#: functions.php:35
+msgid "Secondary"
+msgstr "Sekundäres Menü"
+
+#: functions.php:36
+msgid "Tertiary"
+msgstr "Tertiäres Menü"
+
+#: functions.php:37
+msgid "Footer"
+msgstr ""
+
+#: functions.php:167
+msgid "HfH Theme Options"
+msgstr "Hfh-Theme Optionen"
+
+#: functions.php:168
+msgid "Options specific to the HfH Theme"
+msgstr "Optionen spezifisch für das Hfh-Theme"
+
+#: functions.php:176
+msgid "Show slider"
+msgstr "Slider anzeigen"
+
+#: functions.php:185
+msgid "Number of slides"
+msgstr "Anzahl Slides"
+
+#: functions.php:194
+msgid "Show category filter"
+msgstr "Kategoriefilter anzeigen"
+
+#: functions.php:203
+msgid "Footer Tagline"
+msgstr "Footer Slogan"
+
+#: functions.php:211
+msgid "Footer Contact Address"
+msgstr "Footer Kontaktadresse"
+
+#: functions.php:221
+msgid "Footer Contact Other"
+msgstr "Footer Kontakt Sonstiges"
+
+#: functions.php:230
+msgid "Facebook"
+msgstr ""
+
+#: functions.php:239
+msgid "Youtube"
+msgstr ""
+
+#: functions.php:248
+msgid "LinkedIn"
+msgstr ""
+
+#: functions.php:257
+msgid "Instagram"
+msgstr ""
+
+#: functions.php:266
+msgid "Twitter"
+msgstr ""
+
+#: functions.php:275
+msgid "issuu"
+msgstr ""
+
+#: functions.php:284
+msgid "Copyright Text"
+msgstr ""
+
+#: search.php:5
+msgid "Search"
+msgstr "Suche"
+
+#: search.php:15
+msgctxt "search result count"
+msgid "result"
+msgid_plural "results"
+msgstr[0] "Ergebnis"
+msgstr[1] "Ergebnisse"
+
+#: searchform.php:1
+msgctxt "Search Input Label"
+msgid "Search"
+msgstr "Suche"
+
+#: searchform.php:1
+msgctxt "Search Submit Text"
+msgid "All results"
+msgstr "Alle Ergebnisse"
+
+#: searchform.php:1
+msgctxt "Search Placeholder Text"
+msgid "Search &hellip;"
+msgstr "Suchbegriff"
+
+#: template-parts/related-posts.php:7
+msgid "Related posts"
+msgstr "Ähnliche Beiträge"
+
+#: template-parts/single-navigation.php:12
+msgid "Previous Post"
+msgstr "Vorheriger Beitrag"
+
+#: template-parts/single-navigation.php:20
+msgid "Next Post"
+msgstr "Nächster Beitrag"
