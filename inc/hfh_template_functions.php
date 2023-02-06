@@ -22,7 +22,7 @@ function hfh_get_menu(string $location)
             'label' => $item->title,
         ];
         if (!empty($item->url)) {
-            $data['link'] = ['href' => $item->url];
+            $data['link'] = ['href' => $item->url, 'target' => $item->target];
         } else {
             $data['children'] = [];
         }
