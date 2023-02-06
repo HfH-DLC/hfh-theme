@@ -1,4 +1,4 @@
-import { createApp, onMounted } from "vue";
+import { createApp, onMounted } from "vue/dist/vue.esm-bundler.js";
 import {
   HfhContact,
   HfhFooter,

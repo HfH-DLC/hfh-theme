@@ -14,7 +14,7 @@
 </template>
 
 <script setup>
-import { computed, ref } from "vue";
+import { computed, ref } from "vue/dist/vue.esm-bundler.js";
 import { HfhSelect, HfhFilterGroup } from "@hfh-dlc/hfh-styleguide";
 
 const props = defineProps({
