@@ -9,7 +9,7 @@
 </template>
 
 <script setup>
-import { nextTick, ref } from "vue";
+import { nextTick, ref } from "vue/dist/vue.esm-bundler.js";
 const props = defineProps({
   url: {
     type: String,
