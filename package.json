@@ -7,7 +7,7 @@
     "watch": "vite build --watch",
     "build": "vite build",
     "archive": "mkdir -p bundle && rm -rf bundle/* && dir-archiver --src . --dest ./bundle/hfh-theme.zip --exclude bundle node_modules .vscode vite.config.js .npmrc .env package.json package-lock.json",
-    "bundle": "npm run build && npm run archive"
+    "bundle": "pnpm run build && pnpm run archive"
   },
   "dependencies": {
     "vue": "^3.2.45"
