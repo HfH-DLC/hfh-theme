@@ -28,6 +28,7 @@ const props = defineProps({
 <style lang="scss" scoped>
 .hfh-theme-page-grid {
   max-width: var(--w-container);
+  margin-block: 5.625rem;
   ul {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
