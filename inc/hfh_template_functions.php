@@ -17,28 +17,32 @@ function hfh_get_menu(string $location)
     }
     $menu_items = wp_get_nav_menu_items($menu);
 
-    foreach ($menu_items as $item) {
-        $data = [
-            'label' => $item->title,
-        ];
-        if (!empty($item->url)) {
-            $data['link'] = ['href' => $item->url, 'target' => $item->target];
-        } else {
-            $data['children'] = [];
-        }
+    $output = hfh_build_menu_tree($menu_items);
+    return $output;
+}
 
-        $parent_id = intval($item->menu_item_parent);
-        if ($parent_id == 0) {
-            $output[] = $data;
-        } else {
-            $current_parent = &$output[array_key_last($output)];
-            if (!array_key_exists('children', $current_parent)) {
-                $current_parent['children'] = [];
+/**
+ * Helper function to get nested array from menu_items array
+ */
+function hfh_build_menu_tree(&$elements, $parent_id = 0)
+{
+    $branch = [];
+    foreach ($elements as &$element) {
+        if ($element->menu_item_parent == $parent_id) {
+            $data = [
+                'label' => $element->title,
+            ];
+            if (!empty($element->url)) {
+                $data['link'] = ['href' => $element->url, 'target' => $element->target];
             }
-            $current_parent['children'][] = $data;
+            $children = hfh_build_menu_tree($elements, $element->ID);
+            if ($children) {
+                $data['children'] = $children;
+            }
+            $branch[] = $data;
         }
     }
-    return $output;
+    return $branch;
 }
 
 /**
