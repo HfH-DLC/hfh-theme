@@ -108,6 +108,10 @@
       border: none;
     }
   }
+
+  .wp-block-file:not(.wp-element-button) {
+    font-size: inherit;
+  }
 }
 
 .hfh-article__date {
