@@ -9,7 +9,7 @@
 @mixin content-width {
   max-width: var(--w-content);
   margin-inline: 1rem;
-  @media screen and (min-width: 72rem) {
+  @media screen and (min-width: 48.25rem) {
     margin-inline: auto;
   }
 }
@@ -144,14 +144,6 @@
 /*
 * Teasers
 */
-.hfh-theme-teasers {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-  column-gap: 1rem;
-  row-gap: 1rem;
-  margin-top: 3.5rem;
-}
-
 .hfh-teaser {
   height: 100%;
 }

@@ -16,6 +16,7 @@ import "./style.scss";
 
 import PostsProvider from "./components/PostsProvider.vue";
 import CategoryFilter from "./components/CategoryFilter.vue";
+import PageGrid from "./components/PageGrid.vue";
 
 const app = createApp({
   components: {
@@ -31,6 +32,7 @@ const app = createApp({
 
     CategoryFilter,
     PostsProvider,
+    PageGrid,
   },
   setup() {
     const onSearch = (searchText) => {
@@ -58,6 +60,7 @@ app
   .component("hfh-search-result", HfhSearchResult)
   .component("hfh-slider", HfhSlider)
   .component("hfh-social-block", HfhSocialBlock)
-  .component("posts-provider", PostsProvider);
+  .component("posts-provider", PostsProvider)
+  .component("page-grid", PageGrid);
 
 app.mount("#page");

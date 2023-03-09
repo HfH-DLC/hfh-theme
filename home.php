@@ -30,13 +30,7 @@ get_header();
             <?php if (get_theme_mod('hfh_show_category_filter')) : ?>
                 <category-filter :categories='<?= hfh_get_category_filter_data() ?>' @filter-changed='slotProps.setFilter'></category-filter>
             <?php endif; ?>
-            <ul id="hfh-theme-home-teasers" class="hfh-theme-teasers">
-                <li v-for='post in slotProps.posts' :key='post.id'>
-                    <hfh-teaser :link='post.url' :image-src='post.imageSrc' :image-alt='post.imageAlt' :pretitle='post.pretitle' :title='post.title'>
-                        {{post.excerpt}}
-                    </hfh-teaser>
-                </li>
-            </ul>
+            <page-grid :pages='slotProps.posts' id="hfh-theme-home-teasers"></page-grid>
             <p v-if='slotProps.posts.length === 0' class="hfh-search__no-results">
                 <?= __('Your search yielded no results.', 'hfh') ?>
             </p>
