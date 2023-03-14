@@ -15,7 +15,7 @@ require(get_template_directory() . '/inc/hfh_template_functions.php');
 function hfh_theme_scripts()
 {
     wp_enqueue_style('hfh-theme-assets-style', get_template_directory_uri() . '/dist/style.css', array(), HFH_THEME_VERSION);
-    wp_enqueue_script('hfh-theme-assets', get_template_directory_uri() . '/dist/hfh-theme-assets.umd.cjs', array(),  HFH_THEME_VERSION, true);
+    wp_enqueue_script('hfh-theme-assets', get_template_directory_uri() . '/dist/hfh-theme-assets.js', array(),  HFH_THEME_VERSION, true);
 
     $config = array(
         'homeUrl' => get_home_url(),
