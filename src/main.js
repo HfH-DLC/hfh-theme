@@ -12,7 +12,7 @@ import {
   HfhTeaser,
 } from "@hfh-dlc/hfh-styleguide";
 import "@hfh-dlc/hfh-styleguide/dist/style.css";
-import "./style.scss";
+import "./styles/style.scss";
 
 import PostsProvider from "./components/PostsProvider.vue";
 import CategoryFilter from "./components/CategoryFilter.vue";

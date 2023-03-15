@@ -27,7 +27,10 @@ const props = defineProps({
 
 <style lang="scss" scoped>
 .hfh-theme-page-grid {
-  max-width: var(--w-container);
+  @import "../styles/mixins";
+
+  @include hfh-theme-content-container-width;
+
   margin-block: 5.625rem;
   ul {
     display: grid;
