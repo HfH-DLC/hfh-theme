@@ -25,10 +25,13 @@ jobs:
     - name: Create a .npmrc file for the github private repository
       run: |
         echo "${{ secrets.NPMRC }}" >> .npmrc
+    - name: Setup pnpm
+      uses: pnpm/action-setup@v2
+      with:
+        run_install: true
     - name: Build
       run: |
-          npm ci
-          npm run bundle
+          pnpm run bundle
     - name: Release
       uses:  softprops/action-gh-release@v1
       with:
