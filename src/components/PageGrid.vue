@@ -34,7 +34,7 @@ const props = defineProps({
   margin-block: 5.625rem;
   ul {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(288px, 1fr));
     column-gap: 1rem;
     row-gap: 1rem;
     margin-top: 3.5rem;
