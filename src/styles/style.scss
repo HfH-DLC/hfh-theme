@@ -60,14 +60,17 @@
   grid-template-columns: 1fr fit-content(var(--w-content)) 1fr;
   justify-content: center;
   margin-inline: 1rem;
+  hyphens: auto;
+  overflow-wrap: break-word;
+
+  //By default children take the middle column
   > * {
     grid-column-start: 2;
   }
-}
 
-.hfh-content {
-  hyphens: auto;
-  overflow-wrap: break-word;
+  pre {
+    overflow-x: auto;
+  }
 
   .wp-block-embed.is-type-video {
     .wp-block-embed__wrapper:before {
