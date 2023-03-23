@@ -1,7 +1,7 @@
 {
   "name": "hfh-theme",
   "private": true,
-  "version": "2.0.6",
+  "version": "2.0.7",
   "type": "module",
   "scripts": {
     "watch": "vite build --watch",
@@ -14,7 +14,7 @@
   },
   "packageManager": "pnpm@7.29.0",
   "devDependencies": {
-    "@hfh-dlc/hfh-styleguide": "^1.1.10",
+    "@hfh-dlc/hfh-styleguide": "^1.1.17",
     "@vitejs/plugin-vue": "^4.0.0",
     "autoprefixer": "^10.4.13",
     "dir-archiver": "^2.1.0",
