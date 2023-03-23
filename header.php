@@ -29,13 +29,9 @@
 	<div id="page" class="js-content">
 		<hfh-header v-bind='<?= $props ?>' @search='onSearch'>
 			<template #logo-desktop>
-				<div class="hfh-theme-logo-desktop">
-					<a href="<?= home_url() ?>"><hfh-logo></hfh-logo></a><?= esc_html(get_bloginfo('name'));  ?>
-				</div>
+				<a class="hfh-theme-logo-desktop" href="<?= home_url() ?>"><hfh-logo></hfh-logo><?= esc_html(get_bloginfo('name'));  ?></a>
 			</template>
 			<template #logo-mobile>
-				<div class="hfh-theme-logo-mobile">
-					<a href="<?= home_url() ?>"><hfh-logo></hfh-logo></a><?= esc_html(get_bloginfo('name'));  ?>
-				</div>
+				<a class="hfh-theme-logo-mobile" href="<?= home_url() ?>"><hfh-logo></hfh-logo><?= esc_html(get_bloginfo('name'));  ?></a>
 			</template>
 		</hfh-header>
