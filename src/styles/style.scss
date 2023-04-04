@@ -57,7 +57,7 @@
 */
 .hfh-theme-content {
   display: grid;
-  grid-template-columns: 1fr fit-content(var(--w-content)) 1fr;
+  grid-template-columns: 1fr minmax(auto, var(--w-content)) 1fr;
   justify-content: center;
   margin-inline: 1rem;
   hyphens: auto;
@@ -99,6 +99,20 @@
     td,
     th {
       border: none;
+    }
+  }
+
+  .wp-block-file {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: flex-start;
+    column-gap: 0.75rem;
+    > a {
+      display: block;
+      word-break: break-all;
+      margin: 0;
+      padding: 0;
     }
   }
 
