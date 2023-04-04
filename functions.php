@@ -37,6 +37,7 @@ function hfh_theme_setup()
     );
 
     add_image_size('slider', 1120, 485, true); // (cropped)
+    add_theme_support('post-thumbnails');
 }
 add_action('after_setup_theme', 'hfh_theme_setup');
 
