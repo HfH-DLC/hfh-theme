@@ -3,6 +3,7 @@ import {
   HfhContact,
   HfhFooter,
   HfhHeader,
+  HfhLink,
   HfhLogo,
   HfhPagination,
   HfhSearchBar,
@@ -10,6 +11,7 @@ import {
   HfhSocialBlock,
   HfhSlider,
   HfhTeaser,
+  HfhArrowIcon,
 } from "@hfh-dlc/hfh-styleguide";
 import "@hfh-dlc/hfh-styleguide/dist/style.css";
 import "./styles/style.scss";
@@ -20,9 +22,11 @@ import PageGrid from "./components/PageGrid.vue";
 
 const app = createApp({
   components: {
+    HfhArrowIcon,
     HfhContact,
     HfhFooter,
     HfhHeader,
+    HfhLink,
     HfhLogo,
     HfhPagination,
     HfhSearchBar,
@@ -50,6 +54,7 @@ const app = createApp({
 });
 
 app
+  .component("hfh-arrow-icon", HfhArrowIcon)
   .component("hfh-contact", HfhContact)
   .component("hfh-footer", HfhFooter)
   .component("hfh-header", HfhHeader)
