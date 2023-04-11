@@ -51,7 +51,7 @@
                 foreach ($items as $item) :
             ?>
 
-                    <a href="<?= $item->url ?>"><?= $item->title ?></a>
+                    <a href="<?= $item->url ?>" target="<?= $item->target ?>"><?= $item->title ?></a>
             <?php
                 endforeach;
             endif;
