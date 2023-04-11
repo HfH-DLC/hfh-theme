@@ -1,14 +1,16 @@
 <template>
   <form class="hfh-category-filter" @submit.prevent>
-    <hfh-filter-group @reset="reset">
-      <template v-for="(filter, index) in filters" :key="index">
-        <hfh-select
-          v-bind="filter"
-          v-model="values[index]"
-          @update:modelValue="onUpdate"
-          defaultOption="- Alle -"
-        />
-      </template>
+    <hfh-filter-group @reset="reset" orientation="vertical">
+      <div>
+        <template v-for="(filter, index) in filters" :key="index">
+          <hfh-select
+            v-bind="filter"
+            v-model="values[index]"
+            @update:modelValue="onUpdate"
+            defaultOption="- Alle -"
+          />
+        </template>
+      </div>
     </hfh-filter-group>
   </form>
 </template>
@@ -70,5 +72,4 @@ const onUpdate = () => {
 };
 </script>
 
-<style lang="scss" scoped>
-</style>
+<style lang="scss" scoped></style>
