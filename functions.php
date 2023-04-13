@@ -3,7 +3,7 @@
 
 if (!defined('HFH_THEME_VERSION')) {
     // Replace the version number of the theme on each release.
-    define('HFH_THEME_VERSION', '2.0.13');
+    define('HFH_THEME_VERSION', '2.0.14');
 }
 
 require(get_template_directory() . '/inc/hfh_theme_category_filter.php');
@@ -36,7 +36,8 @@ function hfh_theme_setup()
         )
     );
 
-    add_image_size('slider', 1120, 485, true); // (cropped)
+    add_image_size('slider', 1120, 485, true);
+    add_image_size('teaser', 400, 200, true);
     add_theme_support('post-thumbnails');
 }
 add_action('after_setup_theme', 'hfh_theme_setup');

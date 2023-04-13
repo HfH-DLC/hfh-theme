@@ -54,7 +54,7 @@ function hfh_get_teaser_data($posts)
         return array(
             'id' => $post->ID,
             'url' => get_permalink($post),
-            'imageSrc' => get_the_post_thumbnail_url($post),
+            'imageSrc' => get_the_post_thumbnail_url($post, 'teaser'),
             'imageAlt' => html_entity_decode(get_post_meta(get_post_thumbnail_id($post), '_wp_attachment_image_alt', true)),
             'pretitle' =>  get_the_date('d.m.Y', $post),
             'title' =>  html_entity_decode(get_the_title($post)),
