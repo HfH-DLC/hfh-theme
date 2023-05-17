@@ -97,6 +97,7 @@
   }
 
   .wp-block-table {
+    thead,
     td,
     th {
       border: none;
@@ -119,6 +120,10 @@
 
   .wp-block-file:not(.wp-element-button) {
     font-size: inherit;
+  }
+
+  iframe {
+    margin-bottom: 1.625rem;
   }
 }
 
