@@ -4,7 +4,7 @@
   "version": "2.0.14",
   "type": "module",
   "scripts": {
-    "watch": "vite build --watch",
+    "dev": "vite build --watch",
     "build": "vite build",
     "archive": "mkdir -p bundle && rm -rf bundle/* && dir-archiver --src . --dest ./bundle/hfh-theme.zip --exclude bundle node_modules .vscode vite.config.js .npmrc .env package.json package-lock.json",
     "bundle": "pnpm run build && pnpm run archive"
