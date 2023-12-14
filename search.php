@@ -28,7 +28,7 @@ get_header();
 		get_template_part('template-parts/pagination');
 	else : ?>
 		<p class="hfh-search__no-results">
-			<?= __('Your search yielded no results.', 'hfh') ?>
+			<?= __('Your search yielded no results.', 'hfh-theme') ?>
 		</p>
 	<?php
 	endif;
