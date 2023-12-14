@@ -22,7 +22,7 @@
 	<noscript>
 		<div class="no-js-content">
 			<div class="hfh-info-field">
-				<p><?= __('Please enable javascript to view this website.', 'hfh') ?></p>
+				<p><?= __('Please enable javascript to view this website.', 'hfh-theme') ?></p>
 			</div>
 		</div>
 	</noscript>
