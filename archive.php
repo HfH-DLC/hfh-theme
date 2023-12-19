@@ -21,7 +21,7 @@ global $wp_query;
                 <p v-if='slotProps.posts.length === 0' class="hfh-search__no-results">
                     Die Suche lieferte keine Ergebnisse.
                 </p>
-                <div id="hfh-theme-pagination">
+                <div class="hfh-theme-pagination">
                     <hfh-pagination v-if="slotProps.totalPageCount > 1" :current-page-number='slotProps.currentPageNumber' :total-page-count='slotProps.totalPageCount' type="Button" @page-selected="slotProps.setPage"></hfh-pagination>
                 </div>
             </posts-provider>

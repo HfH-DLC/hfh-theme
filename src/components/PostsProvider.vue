@@ -61,6 +61,7 @@ const setFilter = async (key, value) => {
 };
 
 const setPage = async (newPageNumber) => {
+  console.log("setPage");
   currentPageNumber.value = newPageNumber;
   await fetchPosts();
   if (!props.scrollTargetId) {
@@ -76,5 +77,4 @@ const setPage = async (newPageNumber) => {
 };
 </script>
 
-<style lang="scss" scoped>
-</style>
+<style lang="scss" scoped></style>
