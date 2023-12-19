@@ -19,6 +19,7 @@ import "./styles/style.scss";
 import PostsProvider from "./components/PostsProvider.vue";
 import CategoryFilter from "./components/CategoryFilter.vue";
 import PageGrid from "./components/PageGrid.vue";
+import HeaderWrapper from "./components/HeaderWrapper.vue";
 
 const app = createApp({
   components: {
@@ -37,6 +38,7 @@ const app = createApp({
     CategoryFilter,
     PostsProvider,
     PageGrid,
+    HeaderWrapper,
   },
   setup() {
     const onSearch = (searchText) => {
