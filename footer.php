@@ -1,4 +1,4 @@
-<footer>
+<footer id="hfh-theme-footer">
     <hfh-footer>
         <template #tagline>
             <?= wp_kses_post(wpautop(get_theme_mod('hfh_tagline'))); ?>

@@ -6,8 +6,14 @@ get_header();
     while (have_posts()) :
         the_post();
         get_template_part('template-parts/content', get_post_type());
-        get_template_part('template-parts/single-navigation');
-        get_template_part('template-parts/related-posts');
+    ?>
+        <div id="hfh-theme-single">
+            <?php
+            get_template_part('template-parts/single-navigation');
+            get_template_part('template-parts/related-posts');
+            ?>
+        </div>
+    <?php
     endwhile;
     ?>
 </main>

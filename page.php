@@ -6,7 +6,9 @@ get_header();
     while (have_posts()) :
         the_post();
         get_template_part('template-parts/content', 'page');
-        get_template_part('template-parts/pagination');
+    ?>
+        <div id="hfh-theme-page-pagination"><?= get_template_part('template-parts/pagination'); ?></div>
+    <?php
     endwhile;
     ?>
 </main>

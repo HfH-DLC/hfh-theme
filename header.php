@@ -28,6 +28,8 @@
 		</div>
 	</noscript>
 	<div id="page" class="js-content">
-		<header-wrapper v-bind='<?= $props ?>'>
-			<template #site-name><?= esc_html(get_bloginfo('name'));  ?></template>
-		</header-wrapper>
+		<div id="hfh-theme-header">
+			<header-wrapper v-bind='<?= $props ?>'>
+				<template #site-name><?= esc_html(get_bloginfo('name'));  ?></template>
+			</header-wrapper>
+		</div>

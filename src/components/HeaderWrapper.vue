@@ -3,6 +3,7 @@
     :primaryItems="menuState.primaryItems"
     :secondaryItems="menuState.secondaryItems"
     :tertiaryItems="menuState.tertiaryItems"
+    :search="true"
     @updateItems="onUpdateItems"
     @search="onSearch"
   >
@@ -63,6 +64,12 @@ const onUpdateItems = (items) => {
   menuState.value.primaryItems = items.primaryItems;
   menuState.value.secondaryItems = items.secondaryItems;
   menuState.value.tertiaryItems = items.tertiaryItems;
+};
+
+const onSearch = (searchText) => {
+  const searchUrl = new URL("/", wp_config.homeUrl);
+  searchUrl.searchParams.append("s", searchText);
+  window.location.href = searchUrl.href;
 };
 </script>
 
