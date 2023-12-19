@@ -10,11 +10,11 @@
     "bundle": "pnpm run build && pnpm run archive"
   },
   "dependencies": {
+    "@hfh-dlc/hfh-styleguide": "^1.1.36",
     "vue": "^3.2.45"
   },
   "packageManager": "pnpm@7.29.0",
   "devDependencies": {
-    "@hfh-dlc/hfh-styleguide": "^1.1.20",
     "@vitejs/plugin-vue": "^4.0.0",
     "autoprefixer": "^10.4.13",
     "dir-archiver": "^2.1.0",

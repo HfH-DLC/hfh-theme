@@ -16,7 +16,8 @@
 		'primaryItems' => hfh_get_menu('menu-primary') ?? [],
 		'secondaryItems' => hfh_get_menu('menu-secondary') ?? [],
 		'tertiaryItems' => hfh_get_menu('menu-tertiary') ?? [],
-		'search' => true
+		'search' => true,
+		'homeUrl' => home_url()
 	]);
 	?>
 	<noscript>
@@ -27,11 +28,6 @@
 		</div>
 	</noscript>
 	<div id="page" class="js-content">
-		<hfh-header v-bind='<?= $props ?>' @search='onSearch'>
-			<template #logo-desktop>
-				<a class="hfh-theme-logo-desktop" href="<?= home_url() ?>"><hfh-logo></hfh-logo><?= esc_html(get_bloginfo('name'));  ?></a>
-			</template>
-			<template #logo-mobile>
-				<a class="hfh-theme-logo-mobile" href="<?= home_url() ?>"><hfh-logo></hfh-logo><?= esc_html(get_bloginfo('name'));  ?></a>
-			</template>
-		</hfh-header>
+		<header-wrapper v-bind='<?= $props ?>'>
+			<template #site-name><?= esc_html(get_bloginfo('name'));  ?></template>
+		</header-wrapper>
