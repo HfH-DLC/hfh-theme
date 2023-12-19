@@ -7,6 +7,5 @@
     <?php if (has_post_thumbnail()) : ?>
         <div class="hfh-article__image hfh-header-image"><?php the_post_thumbnail() ?></div>
     <?php endif; ?>
-
     <?php the_content() ?>
 </article>

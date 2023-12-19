@@ -10,7 +10,7 @@ if ($wp_query->max_num_pages > 1) :
     }
     $props = wp_json_encode(['currentPageNumber' => $current_page, 'totalPageCount' => $total_page_count, 'pageLinks' => $pages]);
 ?>
-    <div id="hfh-theme-pagination">
+    <div>
         <hfh-pagination v-bind='<?= $props ?>'></hfh-pagination>
     </div>
 <?php
