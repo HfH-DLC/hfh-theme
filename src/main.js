@@ -36,7 +36,6 @@ function mountVueApp(app, mountPoint) {
   return new Promise((resolve, reject) => {
     try {
       app.provide("onAppMounted", () => {
-        console.log("onAppMounted");
         resolve();
       });
       app.mount(mountPoint);
@@ -128,17 +127,6 @@ function mountApps() {
   });
   contact.component("hfh-contact", HfhContact);
   promises.push(mountVueApp(contact, "#hfh-theme-contact"));
-
-  const pagePagination = createApp({
-    components: {
-      HfhPagination,
-    },
-    setup() {
-      useAppMounted();
-    },
-  });
-  pagePagination.component("hfh-pagination", HfhPagination);
-  promises.push(mountVueApp(pagePagination, "#hfh-theme-pagination"));
 
   const footer = createApp({
     components: {
