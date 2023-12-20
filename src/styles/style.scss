@@ -269,3 +269,28 @@
     }
   }
 }
+
+/*
+* Catalog
+*/
+
+.hfh-theme-catalog {
+  display: grid;
+  padding-block: 2rem;
+  @media screen and (min-width: 64rem) {
+    grid-template-columns: auto 1fr;
+  }
+  row-gap: 1rem;
+}
+
+.hfh-theme-catalog__tag-filter {
+  padding: 1.5rem 1.25rem 2.5rem 1.25rem;
+  margin-inline: 1rem;
+  background-color: var(--c-fantasy-pastel);
+}
+
+.hfh-theme-catalog__book-grid {
+  .hfh-teaser .hfh-teaser__image img {
+    height: auto;
+  }
+}
