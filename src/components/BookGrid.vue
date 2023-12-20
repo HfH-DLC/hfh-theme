@@ -1,13 +1,13 @@
 <template>
   <div class="hfh-theme-book-grid">
     <ul>
-      <li v-for="post in pages" :key="post.id">
+      <li v-for="book in books" :key="book.id">
         <hfh-teaser
-          :link="post.url"
-          :image-src="post.imageSrc"
-          :image-alt="post.imageAlt"
-          :pretitle="post.pretitle"
-          :title="post.title"
+          :link="book.url"
+          :image-src="book.imageSrc"
+          :image-alt="book.imageAlt"
+          :pretitle="book.pretitle"
+          :title="book.title"
         >
           <!-- {{ post.excerpt }} -->
         </hfh-teaser>
@@ -19,7 +19,7 @@
 <script setup>
 import { HfhTeaser } from "@hfh-dlc/hfh-styleguide";
 const props = defineProps({
-  pages: {
+  books: {
     type: Array,
     required: true,
   },
@@ -32,9 +32,11 @@ const props = defineProps({
 
   @include hfh-theme-content-container-width;
 
+  padding-inline: 1rem;
+
   ul {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(288px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(225px, 280px));
     column-gap: 1rem;
     row-gap: 1rem;
     margin-top: 3.5rem;

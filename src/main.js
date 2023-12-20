@@ -14,9 +14,12 @@ import {
 import "@hfh-dlc/hfh-styleguide/dist/style.css";
 import "./styles/style.scss";
 
+import BooksProvider from "./components/BooksProvider.vue";
 import PostsProvider from "./components/PostsProvider.vue";
 import CategoryFilter from "./components/CategoryFilter.vue";
+import TagFilter from "./components/TagFilter.vue";
 import PageGrid from "./components/PageGrid.vue";
+import BookGrid from "./components/BookGrid.vue";
 import HeaderWrapper from "./components/HeaderWrapper.vue";
 
 const useAppMounted = () => {
@@ -164,6 +167,21 @@ function mountApps() {
   searchResults.component("hfh-pagination", HfhPagination);
   searchResults.component("hfh-search-result", HfhSearchResult);
   promises.push(mountVueApp(searchResults, "#hfh-theme-search-results"));
+
+  const catalog = createApp({
+    components: {
+      BooksProvider,
+      BookGrid,
+      TagFilter,
+    },
+    setup() {
+      useAppMounted();
+    },
+  });
+  catalog.component("books-provider", BooksProvider);
+  catalog.component("tag-filter", TagFilter);
+  catalog.component("hfh-book-grid", BookGrid);
+  promises.push(mountVueApp(catalog, "#hfh-theme-catalog"));
 
   promises = promises.filter((promise) => promise !== undefined);
 
