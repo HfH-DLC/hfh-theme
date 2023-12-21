@@ -85,7 +85,7 @@ get_header();
 ?>
 <main id="main">
     <!-- Books -->
-    <div id="hfh-theme-catalog">
+    <div id="hfh-theme-catalog" class="hfh-w-container">
         <?php
         $booksInfos = [];
         foreach ($books as $b) {
@@ -94,7 +94,7 @@ get_header();
                 'imageSrc' => $b['cover_url']['pb_cover_medium'],
                 'imageAlt' => '',
                 'pretitle' => $b['author'],
-                'title' => 'Matthias Test',
+                'title' => $b['title'],
                 'excerpt' => wp_trim_words(strip_tags(pb_decode($b['about'])), 50, '...'),
                 'tags1' => $b['tag_1'],
                 'tags2' => $b['tag_2'],

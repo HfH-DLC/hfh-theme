@@ -11,17 +11,17 @@ const props = defineProps({
   },
 });
 
-const tag1 = ref();
-const tag2 = ref();
+const tags1 = ref([]);
+const tags2 = ref([]);
 const books = computed(() => {
   return props.initialBooks.filter((book) => {
-    if (tag1.value) {
-      if (book.tags1.findIndex((tag) => tag.id == tag1.value) === -1) {
+    if (tags1.value.length > 0) {
+      if (book.tags1.findIndex((tag) => tags1.value.includes(tag.id)) === -1) {
         return false;
       }
     }
-    if (tag2.value) {
-      if (book.tags2.findIndex((tag) => tag.id == tag2.value) === -1) {
+    if (tags2.value.length > 0) {
+      if (book.tags2.findIndex((tag) => tags2.value.includes(tag.id)) === -1) {
         return false;
       }
     }
@@ -30,9 +30,8 @@ const books = computed(() => {
 });
 
 const setTags = async (tags) => {
-  console.log("setTags", tags);
-  tag1.value = tags.tag1;
-  tag2.value = tags.tag2;
+  tags1.value = tags.tags1;
+  tags2.value = tags.tags2;
 };
 </script>
 

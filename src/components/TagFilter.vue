@@ -2,38 +2,27 @@
   <div>
     <div class="hfh-label">Filtern nach</div>
     <div class="taglist">
-      <h2 class="hfh-label">{{ tag1Name }}</h2>
-      <ul>
-        <li v-for="tag in tags1">
-          <button
-            class="tag"
-            :class="{ 'tag--active': activeTags.tag1 == tag.id }"
-            @click="() => toggleTag1(tag.id)"
-          >
-            {{ tag.tag }}
-          </button>
-        </li>
-      </ul>
+      <HfhCheckbox
+        :id="`hfh-theme-catalog-tags`"
+        :legend="tag1Name"
+        :options="tag1Options"
+        v-model="activeTags.tags1"
+      ></HfhCheckbox>
     </div>
     <div class="taglist">
-      <h2 class="hfh-label">{{ tag2Name }}</h2>
-      <ul>
-        <li v-for="tag in tags2">
-          <button
-            class="tag"
-            :class="{ 'tag--active': activeTags.tag2 == tag.id }"
-            @click="() => toggleTag2(tag.id)"
-          >
-            {{ tag.tag }}
-          </button>
-        </li>
-      </ul>
+      <HfhCheckbox
+        :id="`hfh-theme-catalog-tags`"
+        :legend="tag2Name"
+        :options="tag2Options"
+        v-model="activeTags.tags2"
+      ></HfhCheckbox>
     </div>
   </div>
 </template>
 
 <script setup>
-import { ref } from "vue";
+import { ref, computed, watch } from "vue";
+import { HfhCheckbox } from "@hfh-dlc/hfh-styleguide";
 
 const props = defineProps({
   tag1Name: {
@@ -56,19 +45,27 @@ const props = defineProps({
 
 const emit = defineEmits(["tagsChanged"]);
 const activeTags = ref({
-  tag1: null,
-  tag2: null,
+  tags1: [],
+  tags2: [],
 });
 
-const toggleTag1 = (id) => {
-  activeTags.value.tag1 = activeTags.value.tag1 === id ? null : id;
-  emit("tagsChanged", activeTags.value);
-};
+const tag1Options = computed(() =>
+  props.tags1.map((tag) => ({
+    label: tag.tag,
+    value: tag.id,
+    name: tag.id,
+  }))
+);
 
-const toggleTag2 = (id) => {
-  activeTags.value.tag2 = activeTags.value.tag2 === id ? null : id;
-  emit("tagsChanged", activeTags.value);
-};
+const tag2Options = computed(() =>
+  props.tags2.map((tag) => ({
+    label: tag.tag,
+    value: tag.id,
+    name: tag.id,
+  }))
+);
+
+watch(activeTags, () => emit("tagsChanged", activeTags.value), { deep: true });
 </script>
 
 <style lang="scss" scoped>
