@@ -6,6 +6,7 @@
     :search="true"
     @updateItems="onUpdateItems"
     @search="onSearch"
+    :currentItem="currentItem"
   >
     <template #logo-desktop>
       <a class="hfh-theme-logo-desktop" :href="homeUrl"
@@ -59,6 +60,8 @@ const menuState = ref({
   secondaryItems: props.secondaryItems,
   tertiaryItems: props.tertiaryItems,
 });
+
+const currentItem = ref(window.location.href);
 
 const onUpdateItems = (items) => {
   menuState.value.primaryItems = items.primaryItems;
