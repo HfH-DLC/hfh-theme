@@ -3,7 +3,7 @@
     <ul>
       <li v-for="book in books" :key="book.id">
         <hfh-teaser
-          :link="book.url"
+          :link="book.link"
           :image-src="book.imageSrc"
           :image-alt="book.imageAlt"
           :pretitle="book.pretitle"
@@ -28,15 +28,9 @@ const props = defineProps({
 
 <style lang="scss" scoped>
 .hfh-theme-book-grid {
-  @import "../styles/mixins";
-
-  @include hfh-theme-content-container-width;
-
-  padding-inline: 1rem;
-
   ul {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(225px, 280px));
+    grid-template-columns: repeat(auto-fill, minmax(225px, 1fr));
     column-gap: 1rem;
     row-gap: 1rem;
     margin-top: 3.5rem;
