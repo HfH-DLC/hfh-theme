@@ -3,7 +3,7 @@
 
 if (!defined('HFH_THEME_VERSION')) {
     // Replace the version number of the theme on each release.
-    define('HFH_THEME_VERSION', '2.0.21');
+    define('HFH_THEME_VERSION', '2.0.22');
 }
 
 require(get_template_directory() . '/inc/hfh_theme_category_filter.php');
