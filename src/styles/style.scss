@@ -287,6 +287,15 @@
 .hfh-theme-catalog__tag-filter {
   padding: 1.5rem 1.25rem 2.5rem 1.25rem;
   background-color: var(--c-fantasy-pastel);
+
+  .hfh-checkbox-fieldset
+    .hfh-checkbox-fieldset__options
+    .hfh-checkbox-fieldset__option {
+    align-items: flex-start;
+  }
+  .hfh-checkbox {
+    padding-top: 0.375rem;
+  }
 }
 
 .hfh-theme-catalog__book-grid {
