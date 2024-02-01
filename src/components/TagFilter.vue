@@ -7,7 +7,7 @@
         :legend="tag1Name"
         :options="tag1Options"
         v-model="activeTags.tags1"
-        :orientation="vertical"
+        orientation="vertical"
       ></HfhCheckbox>
     </div>
     <div class="taglist">
@@ -16,7 +16,7 @@
         :legend="tag2Name"
         :options="tag2Options"
         v-model="activeTags.tags2"
-        :orientation="vertical"
+        orientation="vertical"
       ></HfhCheckbox>
     </div>
   </div>
