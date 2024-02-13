@@ -91,7 +91,7 @@ get_header();
         foreach ($books as $b) {
             $booksInfos[] = [
                 'link' => get_home_url($b['blogs_id']),
-                'imageSrc' => $b['cover_url']['pb_cover_medium'],
+                'imageSrc' => $b['cover_url']['full'],
                 'imageAlt' => '',
                 'pretitle' => $b['author'],
                 'title' => $b['title'],
