@@ -1,10 +1,19 @@
 @use "./mixins";
 
+html,
+body,
+#page {
+  height: 100%;
+}
+
 #page {
   overflow: hidden;
+  display: flex;
+  flex-direction: column;
 }
 
 #main {
+  flex-grow: 1;
   margin-top: 0.75rem;
   padding-bottom: 4.5rem;
 
