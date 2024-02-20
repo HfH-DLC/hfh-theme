@@ -119,6 +119,11 @@ get_header();
                 </div>
             </div>
         </books-provider>
+        <?php if (is_super_admin() || get_current_user_id() == $pb_user_id) : ?>
+            <a href="<?= admin_url("index.php?page=pb_catalog&user_id=$pb_user_id") ?>" class="hfh-button hfh-button--primary hfh-button--icon-arrow hfh-button--animated">
+                Admin
+            </a>
+        <?php endif;  ?>
     </div>
 </main>
 <?php
