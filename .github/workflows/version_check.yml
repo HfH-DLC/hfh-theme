@@ -13,7 +13,7 @@ jobs:
       USES_PACKAGE_JSON: true
 
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
         with:
           fetch-depth: 0 # Required due to the weg Git works, without it this action won't be able to find any or the correct tags
       - id: wp_version
