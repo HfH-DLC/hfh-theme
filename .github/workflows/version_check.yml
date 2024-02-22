@@ -22,7 +22,7 @@ jobs:
         run: echo "version=$(perl -n -e'/Version:\s*(\d+.\d+.\d+)/ && print $1' $WP_VERSION_FILE)" >> $GITHUB_OUTPUT
       - name: Check if wp_version is set
         if: ${{ !steps.wp_version.outputs.version }}
-        uses: actions/github-script@v3
+        uses: actions/github-script@v7
         with:
           script: |
             core.setFailed('wp_version not set')
@@ -34,13 +34,13 @@ jobs:
           echo "version=$PACKAGE_JSON_VERSION" >> $GITHUB_OUTPUT
       - name: Check if package_json_version is set
         if: ${{ env.USES_PACKAGE_JSON && !steps.package_json_version.outputs.version }}
-        uses: actions/github-script@v3
+        uses: actions/github-script@v7
         with:
           script: |
             core.setFailed('package_version is not set')
       - name: Check if versions are equal
         if: ${{ env.USES_PACKAGE_JSON && steps.wp_version.outputs.version != steps.package_json_version.outputs.version }}
-        uses: actions/github-script@v3
+        uses: actions/github-script@v7
         with:
           script: |
             core.setFailed('wp_version and package_json_version must be the same')
