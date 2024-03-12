@@ -7,7 +7,7 @@ on:
 
 jobs:
   call-workflow-wp-version-check:
-    uses: HfH-DLC/github-workflows/.github/workflows/wp-version-check.yml@main
+    uses: HfH-DLC/github-workflows/.github/workflows/wp_version_check.yml@main
     with:
       wp_version_file: style.css
       use_package_json: true
