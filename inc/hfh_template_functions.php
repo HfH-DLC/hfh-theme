@@ -16,8 +16,9 @@ function hfh_get_menu(string $location)
         return null;
     }
     $menu_items = wp_get_nav_menu_items($menu);
-
-    $output = hfh_build_menu_tree($menu_items);
+    if ($menu_items) {
+        $output = hfh_build_menu_tree($menu_items);
+    }
     return $output;
 }
 

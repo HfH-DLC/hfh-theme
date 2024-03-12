@@ -48,12 +48,14 @@
                 $items = wp_get_nav_menu_items(
                     $menu
                 );
-                foreach ($items as $item) :
+                if ($items) :
+                    foreach ($items as $item) :
             ?>
 
-                    <a href="<?= $item->url ?>" target="<?= $item->target ?>"><?= $item->title ?></a>
+                        <a href="<?= $item->url ?>" target="<?= $item->target ?>"><?= $item->title ?></a>
             <?php
-                endforeach;
+                    endforeach;
+                endif;
             endif;
             ?>
         </template>
