@@ -2,7 +2,7 @@
 $props = wp_json_encode([
     'imageSrc' => get_avatar_url(get_the_author_meta('ID')),
     'link' => esc_url((get_the_author_meta('user_url'))),
-    'name' => get_the_author_meta('nickname'),
+    'name' => get_the_author_meta('display_name'),
     'position' => get_the_author_meta('description'),
     'email' => get_the_author_meta('user_email'),
     'headingLevel' => 2,
